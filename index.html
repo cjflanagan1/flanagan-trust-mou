@@ -1,0 +1,2862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flanagan Family 321 Trust — MOU Transition Plan</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background: #f5f1eb;
+    color: #2c2c2c;
+    line-height: 1.6;
+  }
+
+  header {
+    background: #1a3a4a;
+    color: #e8dcc8;
+    padding: 40px 20px;
+    text-align: center;
+    border-bottom: 4px solid #8b6914;
+  }
+
+  header h1 { font-size: 1.8rem; font-weight: 700; letter-spacing: 1px; margin-bottom: 8px; }
+  header p { font-size: 0.95rem; opacity: 0.85; max-width: 700px; margin: 0 auto; }
+  .subtitle { margin-top: 12px; font-style: italic; font-size: 0.85rem; opacity: 0.7; }
+
+  .container { max-width: 960px; margin: 0 auto; padding: 40px 20px; }
+
+  .intro {
+    background: #fff;
+    border: 1px solid #d4c9b0;
+    border-left: 5px solid #8b6914;
+    border-radius: 4px;
+    padding: 24px 28px;
+    margin-bottom: 40px;
+    font-size: 0.95rem;
+  }
+  .intro strong { color: #1a3a4a; }
+
+  .timeline { position: relative; padding-left: 40px; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 15px;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: #8b6914;
+  }
+
+  .phase {
+    position: relative;
+    margin-bottom: 28px;
+  }
+
+  .phase-dot {
+    position: absolute;
+    left: -33px;
+    top: 14px;
+    width: 20px;
+    height: 20px;
+    background: #8b6914;
+    border: 3px solid #f5f1eb;
+    border-radius: 50%;
+    z-index: 1;
+  }
+
+  .phase.active .phase-dot {
+    background: #1a3a4a;
+    border-color: #8b6914;
+    box-shadow: 0 0 0 4px rgba(139,105,20,0.25);
+  }
+
+  .phase-card {
+    background: #fff;
+    border: 1px solid #d4c9b0;
+    border-radius: 6px;
+    padding: 18px 24px;
+    cursor: pointer;
+    transition: box-shadow 0.2s, border-color 0.2s;
+  }
+
+  .phase-card:hover,
+  .phase.active .phase-card {
+    border-color: #8b6914;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  }
+
+  .phase-card h2 { font-size: 1.1rem; color: #1a3a4a; margin-bottom: 4px; }
+  .phase-card .desc { font-size: 0.88rem; color: #666; }
+
+  .phase-number {
+    display: inline-block;
+    background: #1a3a4a;
+    color: #e8dcc8;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 3px;
+    margin-bottom: 6px;
+  }
+
+  .arrow {
+    float: right;
+    font-size: 0.8rem;
+    color: #8b6914;
+    transition: transform 0.2s;
+  }
+  .phase.active .arrow { transform: rotate(90deg); }
+
+  .doc-list-panel {
+    display: none;
+    background: #faf8f4;
+    border: 1px solid #d4c9b0;
+    border-top: none;
+    border-radius: 0 0 6px 6px;
+    margin-top: -8px;
+    padding: 16px 24px;
+  }
+  .doc-list-panel.visible { display: block; }
+
+  .doc-list-panel h3 {
+    font-size: 0.9rem;
+    color: #8b6914;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .doc-link {
+    display: block;
+    padding: 10px 16px;
+    margin-bottom: 6px;
+    background: #fff;
+    border: 1px solid #e0d8c8;
+    border-radius: 4px;
+    color: #1a3a4a;
+    text-decoration: none;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .doc-link:hover { background: #f0ead8; border-color: #8b6914; }
+
+  .overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 100;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 20px;
+    overflow-y: auto;
+  }
+  .overlay.visible { display: flex; }
+
+  .doc-viewer {
+    background: #fff;
+    max-width: 800px;
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.25);
+    position: relative;
+  }
+
+  .doc-header {
+    background: #1a3a4a;
+    color: #e8dcc8;
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .doc-header h3 { font-size: 1rem; font-weight: 600; }
+
+  .close-btn {
+    background: none;
+    border: 1px solid #e8dcc8;
+    color: #e8dcc8;
+    font-size: 0.85rem;
+    padding: 4px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .close-btn:hover { background: rgba(255,255,255,0.15); }
+
+  .doc-body-wrapper {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-35deg);
+    font-size: 8rem;
+    font-weight: 900;
+    color: rgba(139, 105, 20, 0.07);
+    letter-spacing: 20px;
+    pointer-events: none;
+    z-index: 1;
+    font-family: 'Georgia', serif;
+    white-space: nowrap;
+  }
+
+  .doc-body {
+    padding: 32px;
+    white-space: pre-wrap;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.82rem;
+    line-height: 1.7;
+    max-height: 75vh;
+    overflow-y: auto;
+    color: #333;
+    position: relative;
+    z-index: 2;
+  }
+
+  .draft-banner {
+    background: #8b6914;
+    color: #fff;
+    text-align: center;
+    padding: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+
+  footer {
+    text-align: center;
+    padding: 30px 20px;
+    font-size: 0.8rem;
+    color: #999;
+    border-top: 1px solid #d4c9b0;
+    margin-top: 40px;
+  }
+
+  @media (max-width: 600px) {
+    header h1 { font-size: 1.3rem; }
+    .doc-body { padding: 20px; font-size: 0.75rem; }
+    .watermark { font-size: 4rem; }
+    .container { padding: 20px 12px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Flanagan Family 321 Trust</h1>
+  <p>Memorandum of Understanding &mdash; Trustee Succession &amp; Interest Redistribution</p>
+  <div class="subtitle">321 Phillips Way, Ellsworth, ME 04605 &nbsp;|&nbsp; Est. 2005 &nbsp;|&nbsp; Branch Lake</div>
+</header>
+
+<div class="container">
+
+  <div class="intro">
+    <strong>Why does order matter?</strong> The Flanagan Family 321 Trust is <em>irrevocable</em>. Article II only permits administrative modifications that do not materially affect beneficial interests. To stay within those boundaries, the transition must happen in a specific sequence &mdash; administrative steps first (Phases 1&ndash;3), then substantive changes through a proper legal mechanism (Phase 4), and finally a comprehensive record tying it all together (Phase 5). Skipping steps or reordering them could expose the process to legal challenge. <strong>Click each phase below to review the documents.</strong>
+  </div>
+
+  <div class="timeline" id="timeline">
+
+    <div class="phase" data-phase="1">
+      <div class="phase-dot"></div>
+      <div class="phase-card" onclick="togglePhase(1)">
+        <span class="phase-number">PHASE 1</span>
+        <span class="arrow">&#9654;</span>
+        <h2>Resignations</h2>
+        <div class="desc">Outgoing trustees step down &mdash; Jane Birkhead and Betsy Young formally resign, citing Article 10.2 and Maine statute 18-B M.R.S. &sect; 705.</div>
+      </div>
+      <div class="doc-list-panel" id="panel-1">
+        <h3>Documents</h3>
+        <a class="doc-link" onclick="openDoc('p1_jane', 'Resignation of Trustee \u2014 Jane Birkhead')">Resignation of Trustee &mdash; Jane Birkhead</a>
+        <a class="doc-link" onclick="openDoc('p1_betsy', 'Resignation of Trustee \u2014 Elizabeth (Betsy) Young')">Resignation of Trustee &mdash; Elizabeth (Betsy) Young</a>
+      </div>
+    </div>
+
+    <div class="phase" data-phase="2">
+      <div class="phase-dot"></div>
+      <div class="phase-card" onclick="togglePhase(2)">
+        <span class="phase-number">PHASE 2</span>
+        <span class="arrow">&#9654;</span>
+        <h2>Vote</h2>
+        <div class="desc">Beneficiaries elect new trustees &mdash; all 5 living children vote before any interest changes. Majority (3 of 5) required.</div>
+      </div>
+      <div class="doc-list-panel" id="panel-2">
+        <h3>Documents</h3>
+        <a class="doc-link" onclick="openDoc('p2_notice', 'Notice of Beneficiary Vote')">Notice of Beneficiary Vote</a>
+        <a class="doc-link" onclick="openDoc('p2_record', 'Record of Beneficiary Vote')">Record of Beneficiary Vote</a>
+      </div>
+    </div>
+
+    <div class="phase" data-phase="3">
+      <div class="phase-dot"></div>
+      <div class="phase-card" onclick="togglePhase(3)">
+        <span class="phase-number">PHASE 3</span>
+        <span class="arrow">&#9654;</span>
+        <h2>Record and Transfer</h2>
+        <div class="desc">Registry of Deeds, bank, and insurance &mdash; record the Affidavit of Successor Trustee and transfer administrative accounts.</div>
+      </div>
+      <div class="doc-list-panel" id="panel-3">
+        <h3>Documents</h3>
+        <a class="doc-link" onclick="openDoc('p3_affidavit', 'Affidavit of Successor Trustee')">Affidavit of Successor Trustee</a>
+        <a class="doc-link" onclick="openDoc('p3_bank', 'Bank Authorization Letter \u2014 Camden National')">Bank Authorization Letter &mdash; Camden National</a>
+        <a class="doc-link" onclick="openDoc('p3_insurance', 'Insurance Update Request \u2014 MMG')">Insurance Update Request &mdash; MMG</a>
+      </div>
+    </div>
+
+    <div class="phase" data-phase="4">
+      <div class="phase-dot"></div>
+      <div class="phase-card" onclick="togglePhase(4)">
+        <span class="phase-number">PHASE 4</span>
+        <span class="arrow">&#9654;</span>
+        <h2>Beneficial Interest Changes</h2>
+        <div class="desc">Non-Judicial Settlement Agreement (18-B M.R.S. &sect; 111) &mdash; Betsy's forfeiture, interest transfers to next generation, and spousal rights clarification.</div>
+      </div>
+      <div class="doc-list-panel" id="panel-4">
+        <h3>Documents</h3>
+        <a class="doc-link" onclick="openDoc('p4_njsa', 'Non-Judicial Settlement Agreement')">Non-Judicial Settlement Agreement</a>
+        <a class="doc-link" onclick="openDoc('p4_exA', 'Exhibit A \u2014 Betsy Young Forfeiture &amp; Use Right')">Exhibit A &mdash; Betsy Young Forfeiture &amp; Use Right</a>
+        <a class="doc-link" onclick="openDoc('p4_exB', 'Exhibit B \u2014 Transfer of Interest: Jean Foss')">Exhibit B &mdash; Transfer of Interest: Jean Foss</a>
+        <a class="doc-link" onclick="openDoc('p4_exC', 'Exhibit C \u2014 Transfer of Interest: Jane Birkhead')">Exhibit C &mdash; Transfer of Interest: Jane Birkhead</a>
+        <a class="doc-link" onclick="openDoc('p4_exD', 'Exhibit D \u2014 Spousal Rights Clarification')">Exhibit D &mdash; Spousal Rights Clarification</a>
+      </div>
+    </div>
+
+    <div class="phase" data-phase="5">
+      <div class="phase-dot"></div>
+      <div class="phase-card" onclick="togglePhase(5)">
+        <span class="phase-number">PHASE 5</span>
+        <span class="arrow">&#9654;</span>
+        <h2>Finalize</h2>
+        <div class="desc">Master MOU, filing, and checklist &mdash; comprehensive record incorporating all phases, transmittal to Registry, and completion tracking.</div>
+      </div>
+      <div class="doc-list-panel" id="panel-5">
+        <h3>Documents</h3>
+        <a class="doc-link" onclick="openDoc('p5_mou', 'Final Memorandum of Understanding')">Final Memorandum of Understanding</a>
+        <a class="doc-link" onclick="openDoc('p5_transmittal', 'Transmittal Letter \u2014 Hancock County Registry')">Transmittal Letter &mdash; Hancock County Registry</a>
+        <a class="doc-link" onclick="openDoc('p5_checklist', 'Master Document Checklist')">Master Document Checklist</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  Flanagan Family 321 Trust &mdash; Draft Documents for Review &mdash; Not Legal Advice<br>
+  All documents should be reviewed by a Maine attorney before execution.
+</footer>
+
+<div class="overlay" id="overlay" onclick="if(event.target===this)closeDoc()">
+  <div class="doc-viewer">
+    <div class="draft-banner">DRAFT &mdash; FOR REVIEW ONLY &mdash; NOT YET EXECUTED</div>
+    <div class="doc-header">
+      <h3 id="doc-title">Document</h3>
+      <button class="close-btn" onclick="closeDoc()">Close &times;</button>
+    </div>
+    <div class="doc-body-wrapper">
+      <div class="watermark">DRAFT</div>
+      <div class="doc-body" id="doc-body"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const docs = {};
+docs['p1_jane'] = `
+Resignation by Trustee Named in a Trust Instrument
+
+
+To: All Beneficiaries of the Flanagan Family 321 Trust
+    Mary Jean Foss
+    John M. Flanagan
+    Jane Birkhead
+    Elizabeth (Betsy) Young
+    Christopher J. Flanagan
+
+Settlor:
+Dorothy E. Flanagan (deceased)
+Ellsworth, Maine
+
+
+Re: Flanagan Family 321 Trust, formed by Dorothy E. Flanagan, for the benefit of the Settlor's children, grandchildren, and more remote descendants.
+
+Date of Trust Agreement: 2005
+
+Property: 321 Phillips Way, Ellsworth, ME 04605 (Branch Lake)
+Deed Reference: TR 31 PG 07 PC 10
+
+
+Notice of Resignation
+
+I, Jane Birkhead, an initial Co-Trustee named in the Flanagan Family 321 Trust Agreement, do hereby give notice that I resign as Trustee of the Trust.
+
+Authority for Resignation
+
+This resignation is made pursuant to:
+
+1. Article 10.2 of the Trust Agreement -- which provides that if both initial Trustees (Jane Birkhead and Elizabeth Young) are unable to serve or continue serving as Trustees, successor Trustees shall be elected by a majority of the beneficiaries; and
+
+2. 18-B M.R.S. Section 705 (Maine Uniform Trust Code) -- which provides that a trustee may resign by giving at least thirty (30) days' notice to the qualified beneficiaries and all co-trustees.
+
+Effective Date
+
+This resignation shall take effect thirty (30) days after receipt of this notice by the beneficiaries, or upon the acceptance of the duly elected Successor Trustees, whichever occurs later.
+
+Duties Upon Resignation
+
+All my duties as Trustee shall cease at the effective date of this resignation, except the duty to render an account as provided under Article IX of the Trust Agreement and the duty to deliver Trust property to the Successor Trustees.
+
+I will cooperate in the orderly transfer of all Trust records, accounts (including Camden National Bank accounts), and insurance documentation (MMG Insurance Policy DW 0323180) to the Successor Trustees.
+
+
+Witness my signature this ______ day of ______________, 2026.
+
+
+
+___________________________________________
+Jane Birkhead, Resigning Trustee
+
+Address: ___________________________________
+
+         ___________________________________
+
+
+Notary Acknowledgement
+
+STATE OF ____________________
+
+COUNTY OF ____________________
+
+On ____________________, 2026, before me, ____________________________ (Notary Public), personally appeared Jane Birkhead, who proved to me on the basis of satisfactory evidence to be the person whose name is subscribed to the within instrument and acknowledged to me that she executed the same in her authorized capacity, and that by her signature on the instrument, the person executed the instrument.
+
+I certify under PENALTY OF PERJURY under the laws of the State of ____________________ that the foregoing paragraph is true and correct.
+
+WITNESS my hand and official seal.
+
+Signature: ____________________________ (Seal)
+
+My Commission Expires: ____________________
+`;
+
+docs['p1_betsy'] = `
+Resignation by Trustee Named in a Trust Instrument
+
+
+To: All Beneficiaries of the Flanagan Family 321 Trust
+    Mary Jean Foss
+    John M. Flanagan
+    Jane Birkhead
+    Elizabeth (Betsy) Young
+    Christopher J. Flanagan
+
+Settlor:
+Dorothy E. Flanagan (deceased)
+Ellsworth, Maine
+
+
+Re: Flanagan Family 321 Trust, formed by Dorothy E. Flanagan, for the benefit of the Settlor's children, grandchildren, and more remote descendants.
+
+Date of Trust Agreement: 2005
+
+Property: 321 Phillips Way, Ellsworth, ME 04605 (Branch Lake)
+Deed Reference: TR 31 PG 07 PC 10
+
+
+Notice of Resignation
+
+I, Elizabeth (Betsy) Young, an initial Co-Trustee named in the Flanagan Family 321 Trust Agreement, do hereby give notice that I resign as Trustee of the Trust.
+
+Authority for Resignation
+
+This resignation is made pursuant to:
+
+1. Article 10.2 of the Trust Agreement -- which provides that if both initial Trustees (Jane Birkhead and Elizabeth Young) are unable to serve or continue serving as Trustees, successor Trustees shall be elected by a majority of the beneficiaries; and
+
+2. 18-B M.R.S. Section 705 (Maine Uniform Trust Code) -- which provides that a trustee may resign by giving at least thirty (30) days' notice to the qualified beneficiaries and all co-trustees.
+
+Effective Date
+
+This resignation shall take effect thirty (30) days after receipt of this notice by the beneficiaries, or upon the acceptance of the duly elected Successor Trustees, whichever occurs later.
+
+Duties Upon Resignation
+
+All my duties as Trustee shall cease at the effective date of this resignation, except the duty to render an account as provided under Article IX of the Trust Agreement and the duty to deliver Trust property to the Successor Trustees.
+
+I will cooperate in the orderly transfer of all Trust records, accounts (including Camden National Bank accounts), and insurance documentation (MMG Insurance Policy DW 0323180) to the Successor Trustees.
+
+
+Witness my signature this ______ day of ______________, 2026.
+
+
+
+___________________________________________
+Elizabeth (Betsy) Young, Resigning Trustee
+
+Address: ___________________________________
+
+         ___________________________________
+
+
+Notary Acknowledgement
+
+STATE OF ____________________
+
+COUNTY OF ____________________
+
+On ____________________, 2026, before me, ____________________________ (Notary Public), personally appeared Elizabeth (Betsy) Young, who proved to me on the basis of satisfactory evidence to be the person whose name is subscribed to the within instrument and acknowledged to me that she executed the same in her authorized capacity, and that by her signature on the instrument, the person executed the instrument.
+
+I certify under PENALTY OF PERJURY under the laws of the State of ____________________ that the foregoing paragraph is true and correct.
+
+WITNESS my hand and official seal.
+
+Signature: ____________________________ (Seal)
+
+My Commission Expires: ____________________
+`;
+
+docs['p2_notice'] = `
+Notice of Beneficiary Vote for Election of Successor Trustees
+
+Flanagan Family 321 Trust
+Property: 321 Phillips Way, Ellsworth, ME 04605 (Branch Lake)
+Settlor: Dorothy E. Flanagan (deceased)
+Date of Trust Agreement: 2005
+
+
+Date of Notice: ____________________, 2026
+
+
+To: All Beneficiaries of the Flanagan Family 321 Trust
+
+    Mary Jean Foss
+    Address: ___________________________________________
+
+    John M. Flanagan
+    Address: ___________________________________________
+
+    Jane Birkhead
+    Address: ___________________________________________
+
+    Elizabeth (Betsy) Young
+    Address: ___________________________________________
+
+    Christopher J. Flanagan
+    Address: ___________________________________________
+
+
+Dear Beneficiaries,
+
+You are hereby notified that a vote of the beneficiaries of the Flanagan Family 321 Trust will be conducted for the purpose of electing Successor Co-Trustees.
+
+
+I. Reason for Vote
+
+Both initial Co-Trustees named in the Trust Agreement have submitted their formal resignations:
+
+    Jane Birkhead -- Resignation dated ______________
+    Elizabeth (Betsy) Young -- Resignation dated ______________
+
+Pursuant to Article 10.2 of the Trust Agreement, when both initial Trustees are unable to serve or continue serving, the successor Trustee or Trustees shall be elected by a majority of the beneficiaries.
+
+
+II. Nominees
+
+The following individuals have been nominated to serve as Successor Co-Trustees:
+
+    John M. Flanagan
+    Christopher J. Flanagan
+
+Additional nominations may be submitted in writing prior to the date of vote.
+
+
+III. Voting Details
+
+Date of Vote: ____________________, 2026
+Time: ____________________
+Method: ____________________
+    (In person / telephone conference / written ballot / combination)
+
+Location (if in person): ____________________
+
+
+IV. Eligibility
+
+All five (5) of the Settlor's living children are eligible to vote:
+
+    1. Mary Jean Foss
+    2. John M. Flanagan
+    3. Jane Birkhead
+    4. Elizabeth (Betsy) Young
+    5. Christopher J. Flanagan
+
+A majority of three (3) votes in favor is required to approve the election.
+
+
+V. Important Notes
+
+    This vote concerns only the election of Successor Co-Trustees. No changes
+    to beneficial interests, ownership shares, or financial obligations will be
+    voted on at this time.
+
+    Pursuant to Article 8.2, if only two Trustees are serving, the concurrence
+    and joinder of both shall be required for all matters pertaining to the
+    administration of the Trust.
+
+    If you are unable to participate on the scheduled date, please contact the
+    undersigned to arrange an alternative method of casting your vote.
+
+
+VI. Response Requested
+
+Please confirm your receipt of this notice and your intention to participate
+by contacting:
+
+    Name: ___________________________________________
+    Phone: ___________________________________________
+    Email: ___________________________________________
+
+
+Respectfully,
+
+___________________________________________
+Print Name: ___________________________________________
+Date: ____________________
+`;
+
+docs['p2_record'] = `
+Record of Beneficiary Vote for Election of Successor Trustees
+
+Flanagan Family 321 Trust
+Property: 321 Phillips Way, Ellsworth, ME 04605 (Branch Lake)
+Deed Reference: TR 31 PG 07 PC 10
+Settlor: Dorothy E. Flanagan (deceased), Ellsworth, Maine
+Date of Trust Agreement: 2005
+
+
+I. Purpose of Vote
+
+Pursuant to Article 10.2 of the Flanagan Family 321 Trust Agreement, upon the resignation of both initial Co-Trustees, Jane Birkhead and Elizabeth (Betsy) Young, the successor Trustee or Trustees shall be elected by a majority of the beneficiaries.
+
+This vote is conducted to elect Successor Co-Trustees to replace the resigning initial Co-Trustees. The resignations of Jane Birkhead and Elizabeth (Betsy) Young are attached hereto as supporting documents.
+
+
+II. Eligible Voters
+
+Article 10.2 requires a majority vote of the beneficiaries. The Settlor's five (5) living children constitute the beneficiaries eligible to vote:
+
+1. Mary Jean Foss
+2. John M. Flanagan
+3. Jane Birkhead
+4. Elizabeth (Betsy) Young
+5. Christopher J. Flanagan
+
+A majority requires at least three (3) of the five (5) eligible beneficiaries to vote in favor.
+
+
+III. Nominees for Successor Co-Trustees
+
+The following individuals have been nominated to serve as Successor Co-Trustees of the Flanagan Family 321 Trust:
+
+    John M. Flanagan
+    Christopher J. Flanagan
+
+
+IV. Date and Method of Vote
+
+Date of Vote: ____________________, 2026
+
+Method: (check one)
+
+    [ ] In person
+    [ ] By telephone conference
+    [ ] By written ballot (mail or email)
+    [ ] Combination of methods
+
+
+V. Record of Individual Votes
+
+Each beneficiary's vote is recorded below. A vote of "In Favor" indicates approval of both John M. Flanagan and Christopher J. Flanagan as Successor Co-Trustees.
+
+1. Mary Jean Foss
+
+   Vote:  [ ] In Favor    [ ] Opposed    [ ] Abstain
+
+   Signature: ___________________________________________
+
+   Date: ____________________
+
+
+2. John M. Flanagan
+
+   Vote:  [ ] In Favor    [ ] Opposed    [ ] Abstain
+
+   Signature: ___________________________________________
+
+   Date: ____________________
+
+
+3. Jane Birkhead
+
+   Vote:  [ ] In Favor    [ ] Opposed    [ ] Abstain
+
+   Signature: ___________________________________________
+
+   Date: ____________________
+
+
+4. Elizabeth (Betsy) Young
+
+   Vote:  [ ] In Favor    [ ] Opposed    [ ] Abstain
+
+   Signature: ___________________________________________
+
+   Date: ____________________
+
+
+5. Christopher J. Flanagan
+
+   Vote:  [ ] In Favor    [ ] Opposed    [ ] Abstain
+
+   Signature: ___________________________________________
+
+   Date: ____________________
+
+
+VI. Results
+
+Total In Favor:    ______
+Total Opposed:     ______
+Total Abstain:     ______
+
+Majority Required: 3 of 5
+
+Result: (check one)
+
+    [ ] APPROVED -- A majority of the beneficiaries have elected John M. Flanagan
+        and Christopher J. Flanagan as Successor Co-Trustees of the Flanagan
+        Family 321 Trust, effective upon their acceptance below.
+
+    [ ] NOT APPROVED -- The nomination did not receive the required majority.
+
+
+VII. Acceptance by Successor Co-Trustees
+
+We, the undersigned, having been duly elected by a majority of the beneficiaries pursuant to Article 10.2 of the Flanagan Family 321 Trust Agreement, hereby accept the appointment as Successor Co-Trustees. We agree to be bound by all terms of the Trust Agreement and acknowledge that, pursuant to Article 8.2, the concurrence and joinder of both Co-Trustees shall be required for all matters pertaining to the administration of the Trust.
+
+
+John M. Flanagan, Successor Co-Trustee
+
+Signature: ___________________________________________
+
+Date: ____________________
+
+Address: ___________________________________________
+
+         ___________________________________________
+
+
+Christopher J. Flanagan, Successor Co-Trustee
+
+Signature: ___________________________________________
+
+Date: ____________________
+
+Address: ___________________________________________
+
+         ___________________________________________
+
+
+VIII. Certification
+
+I certify that this Record of Beneficiary Vote accurately reflects the vote conducted on ____________________, 2026, and that all eligible beneficiaries were given proper notice and opportunity to participate.
+
+Certified by: ___________________________________________
+
+Print Name: ___________________________________________
+
+Date: ____________________
+
+
+IX. Supporting Documents
+
+The following documents are attached to or accompany this Record of Vote:
+
+1. Resignation of Trustee -- Jane Birkhead (dated ______________)
+2. Resignation of Trustee -- Elizabeth (Betsy) Young (dated ______________)
+3. Copy of the Flanagan Family 321 Trust Agreement (2005)
+4. Notice of Vote sent to all beneficiaries (dated ______________)
+
+
+X. Notary Acknowledgement
+
+STATE OF ____________________
+
+COUNTY OF ____________________
+
+On ____________________, 2026, before me, ____________________________ (Notary Public), personally appeared the individuals whose signatures appear above, who proved to me on the basis of satisfactory evidence to be the persons whose names are subscribed to the within instrument and acknowledged to me that they executed the same in their authorized capacities.
+
+I certify under PENALTY OF PERJURY under the laws of the State of ____________________ that the foregoing paragraph is true and correct.
+
+WITNESS my hand and official seal.
+
+Signature: ____________________________ (Seal)
+
+My Commission Expires: ____________________
+`;
+
+docs['p3_affidavit'] = `
+Affidavit of Successor Trustee
+
+STATE OF MAINE
+COUNTY OF HANCOCK
+
+
+I. Affiants
+
+We, John M. Flanagan and Christopher J. Flanagan ("Affiants"), being duly sworn, depose and state under penalty of perjury that the following is true and correct.
+
+
+II. Trust
+
+The Trust is known as the Flanagan Family 321 Trust ("Trust").
+
+    Type: Irrevocable
+    Date of Trust Agreement: 2005
+    Settlor: Dorothy E. Flanagan (deceased), of Ellsworth, Maine
+
+
+III. Real Property
+
+The Trust holds real property described as follows:
+
+    Property: 321 Phillips Way, Ellsworth, ME 04605 (Branch Lake)
+    Hancock County, Maine
+    Deed Reference: TR 31 PG 07 PC 10
+    Legal Description: As set forth in Schedule A of the Trust Agreement
+
+
+IV. Previous Trustees
+
+The previous Co-Trustees of the Trust were:
+
+    Jane Birkhead, of Ellsworth, Maine
+    Elizabeth (Betsy) Young, of Portsmouth, New Hampshire
+
+Both were named as initial Co-Trustees in the Trust Agreement pursuant to Article 10.1.
+
+Both Co-Trustees have voluntarily resigned from their positions. Their signed Resignations of Trustee are dated ______________ and ______________, respectively.
+
+
+V. Authority for Succession
+
+Pursuant to Article 10.2 of the Trust Agreement, when both initial Trustees are unable to serve or continue serving as Trustees, the successor Trustee or Trustees shall be elected by a majority of the beneficiaries.
+
+A vote of the beneficiaries was conducted on ____________________, 2026. A majority of the five (5) beneficiaries (the Settlor's living children) voted in favor of electing the undersigned as Successor Co-Trustees.
+
+The Record of Beneficiary Vote is attached hereto as a supporting document.
+
+
+VI. Successor Trustees
+
+The Successor Co-Trustees of the Flanagan Family 321 Trust are:
+
+    John M. Flanagan
+    Address: ___________________________________________
+             ___________________________________________
+
+    Christopher J. Flanagan
+    Address: ___________________________________________
+             ___________________________________________
+
+The Successor Co-Trustees recognize they are currently acting on behalf of the Trust. The Trust has not been revoked, modified, or amended in any manner which would cause the representations contained herein to be incorrect.
+
+
+VII. Authority to Act
+
+The authority to act on behalf of the Trust requires both (2) Successor Co-Trustees to sign, pursuant to Article 8.2 of the Trust Agreement, which provides that when only two Trustees are serving, the concurrence and joinder of both shall be required for all matters pertaining to the administration of the Trust.
+
+
+VIII. Powers
+
+The Successor Co-Trustees have full powers to sell, convey, mortgage, or encumber real and personal property under this Trust, subject to the provisions and limitations set forth in Articles V and VIII of the Trust Agreement and applicable Maine law.
+
+
+IX. Recording
+
+This Affidavit is executed for the purpose of recording in the Hancock County Registry of Deeds pursuant to 18-B M.R.S. Section 1013 of the Maine Uniform Trust Code, to provide public notice of the change in Trustees and to confirm the authority of the Successor Co-Trustees to act with respect to the real property held by the Trust.
+
+
+X. Representations
+
+The Affiants further state that:
+
+    1. The Trust Agreement has not been revoked or terminated.
+
+    2. The Trust Agreement has not been amended or modified in any manner
+       that would affect the validity of this Affidavit.
+
+    3. The Affiants are authorized to execute documents, including deeds
+       and mortgages, on behalf of the Trust with respect to the real
+       property described herein.
+
+    4. The Affiants are not aware of any pending legal action that would
+       affect the validity of this succession or the Trust's ownership
+       of the real property.
+
+
+XI. Execution
+
+We, the Affiants, declare that this Affidavit has been examined by us and its contents are true and correct.
+
+
+John M. Flanagan, Successor Co-Trustee
+
+Signature: ___________________________________________
+
+Date: ____________________
+
+
+Christopher J. Flanagan, Successor Co-Trustee
+
+Signature: ___________________________________________
+
+Date: ____________________
+
+
+Notary Acknowledgement
+
+STATE OF MAINE
+COUNTY OF HANCOCK
+
+On ____________________, 2026, before me, ____________________________ (Notary Public), personally appeared John M. Flanagan and Christopher J. Flanagan, who proved to me on the basis of satisfactory evidence to be the persons whose names are subscribed to the within instrument and acknowledged to me that they executed the same in their authorized capacities as Successor Co-Trustees of the Flanagan Family 321 Trust, and that by their signatures on the instrument, the persons executed the instrument.
+
+I certify under PENALTY OF PERJURY under the laws of the State of Maine that the foregoing paragraph is true and correct.
+
+WITNESS my hand and official seal.
+
+Signature: ____________________________ (Seal)
+
+Print Name: ____________________________
+
+My Commission Expires: ____________________
+
+
+Supporting Documents
+
+The following documents are attached to or accompany this Affidavit:
+
+1. Resignation of Trustee -- Jane Birkhead (dated ______________)
+2. Resignation of Trustee -- Elizabeth (Betsy) Young (dated ______________)
+3. Record of Beneficiary Vote (dated ______________)
+4. Copy of the Flanagan Family 321 Trust Agreement (2005)
+
+
+Recording Information (For Registry Use)
+
+Hancock County Registry of Deeds
+Ellsworth, Maine
+
+Received: ____________________
+Book: ______________ Page: ______________
+Recording Fee: ______________
+`;
+
+docs['p3_bank'] = `
+Authorization for Transfer of Trust Banking Accounts
+
+
+Date: ____________________, 2026
+
+
+To: Camden National Bank
+    Account Services
+    ___________________________________________
+    ___________________________________________
+
+
+Re: Flanagan Family 321 Trust
+    Account Number(s): ___________________________________________
+
+
+Dear Sir or Madam,
+
+We write to notify you of a change in the Trustees of the Flanagan Family 321 Trust ("Trust"), an irrevocable trust established in 2005 by Dorothy E. Flanagan (deceased) of Ellsworth, Maine.
+
+
+I. Change of Trustees
+
+The previous Co-Trustees of the Trust were:
+
+    Jane Birkhead
+    Elizabeth (Betsy) Young
+
+Both Co-Trustees have resigned from their positions. Their signed Resignations of Trustee are enclosed.
+
+Pursuant to Article 10.2 of the Trust Agreement, a majority of the beneficiaries voted on ____________________, 2026, to elect the following individuals as Successor Co-Trustees:
+
+    John M. Flanagan
+    Address: ___________________________________________
+             ___________________________________________
+    Phone: ___________________________________________
+    Email: ___________________________________________
+
+    Christopher J. Flanagan
+    Address: ___________________________________________
+             ___________________________________________
+    Phone: ___________________________________________
+    Email: ___________________________________________
+
+
+II. Request
+
+We, the undersigned Successor Co-Trustees, hereby request that Camden National Bank:
+
+    1. Update all records for the Trust account(s) to reflect the change
+       in Trustees from Jane Birkhead and Elizabeth (Betsy) Young to
+       John M. Flanagan and Christopher J. Flanagan.
+
+    2. Remove Jane Birkhead and Elizabeth (Betsy) Young as authorized
+       signers on all Trust accounts.
+
+    3. Add John M. Flanagan and Christopher J. Flanagan as the authorized
+       signers on all Trust accounts.
+
+    4. Issue new checks, debit cards, or other account access instruments
+       as needed in the names of the Successor Co-Trustees.
+
+    5. Provide updated account statements to the Successor Co-Trustees
+       at the addresses listed above.
+
+
+III. Authority
+
+Pursuant to Article 8.2 of the Trust Agreement, the concurrence and joinder of both Co-Trustees is required for all matters pertaining to the administration of the Trust. Both Successor Co-Trustees must authorize any transactions on the Trust accounts.
+
+
+IV. Enclosed Documents
+
+The following documents are enclosed for your review and records:
+
+    1. Certified copy of the Flanagan Family 321 Trust Agreement (2005)
+    2. Resignation of Trustee -- Jane Birkhead (dated ______________)
+    3. Resignation of Trustee -- Elizabeth (Betsy) Young (dated ______________)
+    4. Record of Beneficiary Vote (dated ______________)
+    5. Affidavit of Successor Trustee (notarized, dated ______________)
+
+Pursuant to Article 12.1 of the Trust Agreement, anyone may rely upon a copy certified by a notary public to be a true copy of the Trust instrument, and anyone may rely fully upon any statements of fact certified by anyone who appears from the original counterpart or a certified copy thereof to be a Trustee hereunder.
+
+
+V. Signatures
+
+We, the undersigned, certify that we are the duly elected and acting Successor Co-Trustees of the Flanagan Family 321 Trust and are authorized to make this request.
+
+
+John M. Flanagan, Successor Co-Trustee
+
+Signature: ___________________________________________
+
+Date: ____________________
+
+
+Christopher J. Flanagan, Successor Co-Trustee
+
+Signature: ___________________________________________
+
+Date: ____________________
+`;
+
+docs['p3_insurance'] = `
+Request to Update Named Insured on Trust Property Insurance Policy
+
+
+Date: ____________________, 2026
+
+
+To: MMG Insurance
+    ___________________________________________
+    ___________________________________________
+
+
+Re: Policy Number DW 0323180
+    Flanagan Family 321 Trust
+    Property: 321 Phillips Way, Ellsworth, ME 04605 (Branch Lake)
+
+
+Dear Sir or Madam,
+
+We write to notify you of a change in the Trustees of the Flanagan Family 321 Trust ("Trust") and to request that the above-referenced insurance policy be updated accordingly.
+
+
+I. Trust Information
+
+    Trust Name: Flanagan Family 321 Trust
+    Type: Irrevocable
+    Date of Trust Agreement: 2005
+    Settlor: Dorothy E. Flanagan (deceased), Ellsworth, Maine
+    Insured Property: 321 Phillips Way, Ellsworth, ME 04605
+    Policy Number: DW 0323180
+
+
+II. Change of Trustees
+
+The previous Co-Trustees of the Trust were:
+
+    Jane Birkhead
+    Elizabeth (Betsy) Young
+
+Both are currently listed as named insured on Policy DW 0323180. Both Co-Trustees have resigned from their positions effective ____________________, 2026.
+
+Pursuant to Article 10.2 of the Trust Agreement, a majority of the beneficiaries voted on ____________________, 2026, to elect the following individuals as Successor Co-Trustees:
+
+    John M. Flanagan
+    Address: ___________________________________________
+             ___________________________________________
+    Phone: ___________________________________________
+    Email: ___________________________________________
+
+    Christopher J. Flanagan
+    Address: ___________________________________________
+             ___________________________________________
+    Phone: ___________________________________________
+    Email: ___________________________________________
+
+
+III. Requested Changes
+
+We, the undersigned Successor Co-Trustees, hereby request the following changes to Policy DW 0323180:
+
+    1. Remove Jane Birkhead as a named insured.
+
+    2. Remove Elizabeth (Betsy) Young as a named insured.
+
+    3. Add John M. Flanagan as a named insured in his capacity as
+       Successor Co-Trustee of the Flanagan Family 321 Trust.
+
+    4. Add Christopher J. Flanagan as a named insured in his capacity as
+       Successor Co-Trustee of the Flanagan Family 321 Trust.
+
+    5. Update the named insured to read:
+       "John M. Flanagan and Christopher J. Flanagan, as Co-Trustees
+       of the Flanagan Family 321 Trust"
+
+    6. Update the mailing address for policy correspondence to:
+       ___________________________________________
+       ___________________________________________
+       ___________________________________________
+
+
+IV. Additional Insured Parties
+
+The following additional insured parties are currently listed on the policy and should be reviewed for accuracy:
+
+    Flanagan Pine Branch Trust
+    Christopher Flanagan
+    Mary Jean Foss
+    John Flanagan
+
+Please confirm whether these additional insured designations remain current or if any updates are needed.
+
+
+V. Enclosed Documents
+
+The following documents are enclosed for your review and records:
+
+    1. Certified copy of the Flanagan Family 321 Trust Agreement (2005)
+    2. Resignation of Trustee -- Jane Birkhead (dated ______________)
+    3. Resignation of Trustee -- Elizabeth (Betsy) Young (dated ______________)
+    4. Record of Beneficiary Vote (dated ______________)
+    5. Affidavit of Successor Trustee (notarized, dated ______________)
+
+
+VI. Continuity of Coverage
+
+We request that there be no lapse in coverage during this transition. The property remains owned by the Flanagan Family 321 Trust. Only the identity of the Trustees administering the Trust has changed.
+
+Please confirm in writing that the policy has been updated and provide a revised declarations page reflecting the changes.
+
+
+VII. Signatures
+
+We, the undersigned, certify that we are the duly elected and acting Successor Co-Trustees of the Flanagan Family 321 Trust and are authorized to make this request.
+
+
+John M. Flanagan, Successor Co-Trustee
+
+Signature: ___________________________________________
+
+Date: ____________________
+
+
+Christopher J. Flanagan, Successor Co-Trustee
+
+Signature: ___________________________________________
+
+Date: ____________________
+`;
+
+docs['p4_njsa'] = `
+Non-Judicial Settlement Agreement
+Flanagan Family 321 Trust
+
+Pursuant to 18-B M.R.S. Section 111 (Maine Uniform Trust Code)
+
+
+Trust: Flanagan Family 321 Trust
+Settlor: Dorothy E. Flanagan (deceased), Ellsworth, Maine
+Date of Trust Agreement: 2005
+Property: 321 Phillips Way, Ellsworth, ME 04605 (Branch Lake)
+Deed Reference: TR 31 PG 07 PC 10
+Trustees: John M. Flanagan and Christopher J. Flanagan, Successor Co-Trustees
+Date of Agreement: ____________________, 2026
+
+
+I. Parties
+
+This Non-Judicial Settlement Agreement ("Agreement") is entered into by and among all interested persons of the Flanagan Family 321 Trust, as defined by 18-B M.R.S. Section 111:
+
+Current Beneficiaries (Settlor's Living Children):
+
+    1. Mary Jean Foss
+    2. John M. Flanagan
+    3. Jane Birkhead
+    4. Elizabeth (Betsy) Young
+    5. Christopher J. Flanagan
+
+Successor Beneficiaries (Receiving Interest Under This Agreement):
+
+    6. Jennifer Yommer (daughter of Mary Jean Foss)
+    7. Martha Foss (daughter of Mary Jean Foss)
+    8. Joey Birkhead (son of Jane Birkhead)
+    9. Diane Birkhead (daughter of Jane Birkhead)
+
+Affected Persons (Granted Use Rights Under This Agreement):
+
+    10. Edward Young (son of Elizabeth Young)
+    11. Jack Young (son of Elizabeth Young)
+
+Successor Co-Trustees:
+
+    12. John M. Flanagan
+    13. Christopher J. Flanagan
+
+
+II. Authority
+
+This Agreement is executed pursuant to 18-B M.R.S. Section 111 of the Maine Uniform Trust Code, which provides that interested persons may enter into a binding non-judicial settlement agreement with respect to any matter involving a trust.
+
+18-B M.R.S. Section 111(4) provides that a non-judicial settlement agreement is valid only to the extent it does not violate a material purpose of the trust and includes terms and conditions that could be properly approved by the court under the Maine Uniform Trust Code.
+
+The parties represent that the terms of this Agreement are consistent with the material purposes of the Trust, which include:
+
+    a. Benefiting the Settlor's children, grandchildren, and more remote
+       descendants, in that order of priority (Recitals of Trust Agreement).
+
+    b. Preserving the Camp Property for the use and enjoyment of the
+       Settlor's descendants (Article V, Section 5.1).
+
+    c. Protecting the Trust property from alienation to outside parties
+       (Article VII).
+
+All modifications herein keep the beneficial interests within the Settlor's family line and further the Settlor's expressed wishes for continued family use of the Camp Property.
+
+
+III. Purpose
+
+The parties enter into this Agreement to formalize the following modifications to the administration and beneficial interests of the Trust:
+
+    A. The forfeiture of Elizabeth (Betsy) Young's beneficial interest and
+       the grant of a lifetime use right to her and her children.
+
+    B. The transfer of Mary Jean Foss's beneficial interest to her children.
+
+    C. The transfer of Jane Birkhead's beneficial interest to her children.
+
+    D. The clarification of spousal rights upon the death of a beneficiary.
+
+Each of these matters is set forth in detail below and in the attached Exhibits.
+
+
+IV. Betsy Young Interest Forfeiture and Lifetime Use Right
+
+A. Forfeiture
+
+Elizabeth (Betsy) Young voluntarily forfeits her entire beneficial interest in the Flanagan Family 321 Trust, including all rights to income distributions under Article IV, all rights to use of the Camp Property under Article V, and all voting rights as a beneficiary.
+
+This forfeiture extends to her heirs, Edward Young and Jack Young, who likewise forfeit any current or future beneficial interest they may hold or claim in the Trust.
+
+B. Consideration
+
+In consideration for this forfeiture and in exchange for being released from all financial obligations under Article 5.3 of the Trust Agreement (including assessments for utilities, real property taxes, insurance, repairs, maintenance, and capital improvements), Elizabeth Young, Edward Young, and Jack Young are granted the following:
+
+    1. One (1) aggregate week of summer use of the Camp Property per
+       calendar year, for the remainder of their respective lifetimes.
+
+    2. This use right is personal and non-transferable. It may not be
+       assigned, sold, or conveyed to any person.
+
+    3. The specific dates of use shall be requested before the beginning
+       of each summer season. The Successor Co-Trustees will make every
+       reasonable effort to accommodate the requested dates in coordination
+       with the schedules of all active beneficiaries.
+
+    4. All scheduling is subject to the discretion of the Co-Trustees.
+
+C. No Claim to Proceeds
+
+This forfeiture includes any and all current and future claims to:
+
+    Sale proceeds, equity, or distributions should the Property be sold
+    in whole or in part under Article 5.5 or otherwise.
+
+    Any right to purchase the Camp Property under Article 5.6.
+
+    Any right to participate in voting for or against the sale of the
+    Camp Property under Article 5.5.
+
+    Any right to nominate or vote for the removal of a Trustee under
+    Article 10.2.
+
+D. Redistribution
+
+The beneficial interest formerly held by Elizabeth (Betsy) Young is hereby redistributed equally to the four (4) remaining branches:
+
+    Mary Jean Foss branch: additional 5%
+    John M. Flanagan: additional 5%
+    Jane Birkhead branch: additional 5%
+    Christopher J. Flanagan: additional 5%
+
+Following this redistribution, each of the four remaining branches holds a 25% beneficial interest in the Trust.
+
+E. Re-Entry Provision
+
+If Elizabeth (Betsy) Young or her heirs desire to return to being active beneficiaries of the Trust in the future, paying their share of annual expenses, the then-active beneficiaries shall vote on the terms and conditions of such re-entry. Approval shall require a majority vote of the active beneficiaries at that time.
+
+The complete terms of this forfeiture and use right are set forth in the attached Exhibit A.
+
+
+V. Transfer of Beneficial Interest -- Mary Jean Foss
+
+Mary Jean Foss hereby transfers her entire 25% beneficial interest in the Flanagan Family 321 Trust to her children in equal shares:
+
+    Jennifer Yommer: 12.5% beneficial interest
+    Martha Foss: 12.5% beneficial interest
+
+Effective on the date of this Agreement:
+
+    1. Jennifer Yommer and Martha Foss assume all rights of their mother's
+       beneficial interest, including the right to use the Camp Property,
+       the right to vote as beneficiaries, and the right to receive income
+       distributions under Article IV.
+
+    2. Jennifer Yommer and Martha Foss assume all obligations associated
+       with this interest, including the obligation to pay their proportionate
+       share of expenses under Article 5.3.
+
+    3. Mary Jean Foss relinquishes her beneficial interest, voting rights,
+       and financial obligations under the Trust.
+
+The complete terms of this transfer are set forth in the attached Exhibit B.
+
+
+VI. Transfer of Beneficial Interest -- Jane Birkhead
+
+Jane Birkhead hereby transfers her entire 25% beneficial interest in the Flanagan Family 321 Trust to her children in equal shares:
+
+    Joey Birkhead: 12.5% beneficial interest
+    Diane Birkhead: 12.5% beneficial interest
+
+Effective on the date of this Agreement:
+
+    1. Joey Birkhead and Diane Birkhead assume all rights of their mother's
+       beneficial interest, including the right to use the Camp Property,
+       the right to vote as beneficiaries, and the right to receive income
+       distributions under Article IV.
+
+    2. Joey Birkhead and Diane Birkhead assume all obligations associated
+       with this interest, including the obligation to pay their proportionate
+       share of expenses under Article 5.3.
+
+    3. Jane Birkhead relinquishes her beneficial interest, voting rights,
+       and financial obligations under the Trust.
+
+The complete terms of this transfer are set forth in the attached Exhibit C.
+
+
+VII. Clarification of Spousal Rights
+
+The Trust Agreement does not specifically address the rights and responsibilities of the spouses of beneficiaries upon the death or incapacity of a beneficiary. Article 5.7 references a deceased beneficiary's "heirs" but does not define the term or clarify spousal succession.
+
+The parties agree to the following clarification:
+
+A. Spousal Inheritance
+
+In the event of the death of an active beneficiary who has no living heirs or no adult heirs at the time of death, the surviving spouse of that beneficiary shall inherit:
+
+    1. The deceased beneficiary's beneficial interest in the Trust.
+
+    2. All rights associated with that interest, including the right to
+       use the Camp Property and the right to vote as a beneficiary.
+
+    3. All obligations associated with that interest, including the
+       obligation to pay the proportionate share of expenses under
+       Article 5.3.
+
+B. Continuation of Family Line
+
+Upon the death of the surviving spouse, or if the surviving spouse chooses to no longer participate in the Trust, the beneficial interest shall pass to the children (descendants) of the original beneficiary.
+
+C. No Heirs or Descendants
+
+If the original beneficiary has no children or descendants, and the surviving spouse has died or is no longer participating, the beneficial interest shall be redistributed equally among the remaining active beneficiaries of the Trust.
+
+D. Interaction with Article 5.7
+
+This clarification is intended to supplement, not replace, Article 5.7. The right of first refusal provisions in Article 5.7 (offering a deceased beneficiary's interest first to the Trust, then to remaining beneficiaries) remain in effect. This clarification addresses only the succession of interests that are not purchased under Article 5.7.
+
+The complete terms of this clarification are set forth in the attached Exhibit D.
+
+
+VIII. Updated Ownership Structure
+
+Following the execution of this Agreement, the beneficial interests in the Flanagan Family 321 Trust shall be as follows:
+
+    John M. Flanagan                  25.0%
+    Christopher J. Flanagan           25.0%
+    Jennifer Yommer                   12.5%
+    Martha Foss                       12.5%
+    Joey Birkhead                     12.5%
+    Diane Birkhead                    12.5%
+                                     ------
+    Total                            100.0%
+
+    Elizabeth (Betsy) Young, Edward Young, and Jack Young:
+    Lifetime use right of one (1) aggregate week per summer.
+    No beneficial interest. No voting rights. No financial obligations.
+
+    Mary Jean Foss: No beneficial interest (transferred to children).
+    Jane Birkhead: No beneficial interest (transferred to children).
+
+
+IX. Active Beneficiaries and Voting
+
+Following this Agreement, the active beneficiaries entitled to vote on Trust matters shall be:
+
+    1. John M. Flanagan (25%)
+    2. Christopher J. Flanagan (25%)
+    3. Jennifer Yommer (12.5%)
+    4. Martha Foss (12.5%)
+    5. Joey Birkhead (12.5%)
+    6. Diane Birkhead (12.5%)
+
+A majority of the active beneficiaries shall be required for any vote under the Trust Agreement unless the Trust Agreement specifies a different threshold.
+
+
+X. Governing Law
+
+This Agreement shall be governed by the laws of the State of Maine, including the Maine Uniform Trust Code (18-B M.R.S.), consistent with Article XIII of the Trust Agreement.
+
+
+XI. Severability
+
+If any provision of this Agreement is found to be invalid or unenforceable, the remaining provisions shall continue in full force and effect.
+
+
+XII. Entire Agreement
+
+This Agreement, together with its attached Exhibits, constitutes the complete agreement of the parties with respect to the matters addressed herein. This Agreement supplements the Flanagan Family 321 Trust Agreement dated 2005 and does not replace or revoke it except as specifically modified herein.
+
+
+XIII. Exhibits
+
+The following Exhibits are attached to and incorporated into this Agreement:
+
+    Exhibit A: Betsy Young Forfeiture and Lifetime Use Right Agreement
+    Exhibit B: Transfer of Beneficial Interest -- Mary Jean Foss to
+               Jennifer Yommer and Martha Foss
+    Exhibit C: Transfer of Beneficial Interest -- Jane Birkhead to
+               Joey Birkhead and Diane Birkhead
+    Exhibit D: Spousal Rights Clarification
+
+
+XIV. Signatures
+
+Each undersigned party acknowledges that they have read and understand the terms of this Agreement, that they have had the opportunity to consult with independent legal counsel, and that they execute this Agreement voluntarily.
+
+
+Current Beneficiaries:
+
+Mary Jean Foss
+Signature: ___________________________________________
+Date: ____________________
+Address: ___________________________________________
+
+
+John M. Flanagan
+Signature: ___________________________________________
+Date: ____________________
+Address: ___________________________________________
+
+
+Jane Birkhead
+Signature: ___________________________________________
+Date: ____________________
+Address: ___________________________________________
+
+
+Elizabeth (Betsy) Young
+Signature: ___________________________________________
+Date: ____________________
+Address: ___________________________________________
+
+
+Christopher J. Flanagan
+Signature: ___________________________________________
+Date: ____________________
+Address: ___________________________________________
+
+
+Successor Beneficiaries:
+
+Jennifer Yommer
+Signature: ___________________________________________
+Date: ____________________
+Address: ___________________________________________
+
+
+Martha Foss
+Signature: ___________________________________________
+Date: ____________________
+Address: ___________________________________________
+
+
+Joey Birkhead
+Signature: ___________________________________________
+Date: ____________________
+Address: ___________________________________________
+
+
+Diane Birkhead
+Signature: ___________________________________________
+Date: ____________________
+Address: ___________________________________________
+
+
+Affected Persons:
+
+Edward Young
+Signature: ___________________________________________
+Date: ____________________
+Address: ___________________________________________
+
+
+Jack Young
+Signature: ___________________________________________
+Date: ____________________
+Address: ___________________________________________
+
+
+Successor Co-Trustees:
+
+John M. Flanagan, Successor Co-Trustee
+Signature: ___________________________________________
+Date: ____________________
+
+
+Christopher J. Flanagan, Successor Co-Trustee
+Signature: ___________________________________________
+Date: ____________________
+
+
+Notary Acknowledgement
+
+STATE OF ____________________
+COUNTY OF ____________________
+
+On ____________________, 2026, before me, ____________________________ (Notary Public), personally appeared the individuals whose signatures appear above, who proved to me on the basis of satisfactory evidence to be the persons whose names are subscribed to the within instrument and acknowledged to me that they executed the same voluntarily and in their authorized capacities.
+
+I certify under PENALTY OF PERJURY under the laws of the State of ____________________ that the foregoing paragraph is true and correct.
+
+WITNESS my hand and official seal.
+
+Signature: ____________________________ (Seal)
+
+Print Name: ____________________________
+
+My Commission Expires: ____________________
+`;
+
+docs['p4_exA'] = `
+Exhibit A
+
+Betsy Young Interest Forfeiture and Lifetime Use Right Agreement
+
+Attached to and incorporated into the Non-Judicial Settlement Agreement
+dated ____________________, 2026
+
+Flanagan Family 321 Trust
+Property: 321 Phillips Way, Ellsworth, ME 04605 (Branch Lake)
+
+
+I. Parties
+
+This Exhibit is entered into by:
+
+    Elizabeth (Betsy) Young ("Betsy")
+    Edward Young ("Edward"), son of Betsy
+    Jack Young ("Jack"), son of Betsy
+
+and
+
+    John M. Flanagan, Successor Co-Trustee
+    Christopher J. Flanagan, Successor Co-Trustee
+
+and acknowledged by all other parties to the Non-Judicial Settlement Agreement.
+
+
+II. Background
+
+Betsy is one of the five (5) children of Dorothy E. Flanagan, the Settlor of the Flanagan Family 321 Trust. Betsy was named as an initial Co-Trustee (Article 10.1) and is a beneficiary of the Trust.
+
+Betsy, Edward, and Jack no longer wish to participate in the shared expenses of the Camp Property as outlined in Article 5.3 of the Trust Agreement.
+
+
+III. Forfeiture of Beneficial Interest
+
+Betsy hereby voluntarily forfeits her entire beneficial interest in the Flanagan Family 321 Trust, effective on the date of the Non-Judicial Settlement Agreement.
+
+This forfeiture includes:
+
+    a. All rights to income distributions under Article IV.
+
+    b. All beneficial interest in the Camp Property and any other Trust
+       assets.
+
+    c. All voting rights as a beneficiary, including the right to vote
+       on the sale of the Camp Property (Article 5.5), the nomination
+       or removal of Trustees (Article 10.2), and the approval of
+       expenses and assessments (Article 5.3).
+
+    d. All current and future claims to sale proceeds, equity, or
+       distributions should the Property be sold in whole or in part.
+
+    e. All rights to purchase the Camp Property or any subdivided part
+       thereof under Article 5.6.
+
+Edward and Jack likewise forfeit any current or future beneficial interest they may hold or claim in the Trust through Betsy.
+
+
+IV. Release from Financial Obligations
+
+In consideration for the forfeiture described above, Betsy, Edward, and Jack are permanently released from all financial obligations under the Trust, including:
+
+    a. Assessments for utilities, real property taxes, insurance, repairs,
+       maintenance, and capital improvements under Article 5.3.
+
+    b. Any outstanding or unpaid assessments as of the date of this
+       Agreement.
+
+    c. Any future assessments of any kind.
+
+
+V. Lifetime Use Right
+
+In further consideration for the forfeiture, Betsy, Edward, and Jack are granted the following use right:
+
+    a. One (1) aggregate week of summer use of the Camp Property per
+       calendar year, for the remainder of their respective lifetimes.
+
+    b. "Aggregate" means one (1) total week shared among the three of
+       them, not one (1) week each.
+
+    c. "Summer" shall mean the period from Memorial Day weekend through
+       Labor Day weekend of each calendar year.
+
+    d. Betsy, Edward, or Jack shall submit their requested dates to the
+       Co-Trustees before May 1 of each year.
+
+    e. The Co-Trustees will make every reasonable effort to accommodate
+       the specific dates requested, in coordination with the schedules
+       of all active beneficiaries.
+
+    f. Final scheduling is subject to the sole discretion of the
+       Co-Trustees.
+
+    g. This use right is personal to Betsy, Edward, and Jack. It may not
+       be assigned, transferred, sold, or conveyed to any other person.
+
+    h. This use right does not include any right to invite guests beyond
+       immediate family without prior approval of the Co-Trustees.
+
+    i. During their week of use, Betsy, Edward, and Jack shall treat the
+       Camp Property with reasonable care and leave it in the condition
+       in which it was found.
+
+
+VI. Termination of Use Right
+
+The use right granted herein shall terminate:
+
+    a. Upon the death of each individual (Betsy, Edward, or Jack) as to
+       that individual only. The surviving individuals retain their
+       portion of the aggregate week.
+
+    b. Upon the death of the last surviving individual among Betsy,
+       Edward, and Jack.
+
+    c. The use right does not pass to the heirs, spouses, or descendants
+       of Betsy, Edward, or Jack.
+
+
+VII. Redistribution of Forfeited Interest
+
+The beneficial interest formerly held by Betsy is redistributed equally to the four (4) remaining branches:
+
+    Mary Jean Foss branch (Jennifer Yommer and Martha Foss): 5%
+    John M. Flanagan: 5%
+    Jane Birkhead branch (Joey Birkhead and Diane Birkhead): 5%
+    Christopher J. Flanagan: 5%
+
+This redistribution results in each of the four remaining branches holding a 25% beneficial interest.
+
+
+VIII. Re-Entry Provision
+
+If Betsy, Edward, or Jack desire to return to being active beneficiaries of the Trust in the future, paying their proportionate share of annual expenses, the then-active beneficiaries shall vote on the terms and conditions of such re-entry.
+
+    a. Approval shall require a majority vote of the active beneficiaries
+       at that time.
+
+    b. The terms of re-entry, including the percentage of beneficial
+       interest to be restored, shall be determined by the active
+       beneficiaries at the time of the vote.
+
+    c. Re-entry does not automatically restore the original 20% interest.
+
+
+IX. Signatures
+
+Elizabeth (Betsy) Young
+Signature: ___________________________________________
+Date: ____________________
+Address: ___________________________________________
+
+
+Edward Young
+Signature: ___________________________________________
+Date: ____________________
+Address: ___________________________________________
+
+
+Jack Young
+Signature: ___________________________________________
+Date: ____________________
+Address: ___________________________________________
+
+
+John M. Flanagan, Successor Co-Trustee
+Signature: ___________________________________________
+Date: ____________________
+
+
+Christopher J. Flanagan, Successor Co-Trustee
+Signature: ___________________________________________
+Date: ____________________
+`;
+
+docs['p4_exB'] = `
+Exhibit B
+
+Transfer of Beneficial Interest
+Mary Jean Foss to Jennifer Yommer and Martha Foss
+
+Attached to and incorporated into the Non-Judicial Settlement Agreement
+dated ____________________, 2026
+
+Flanagan Family 321 Trust
+Property: 321 Phillips Way, Ellsworth, ME 04605 (Branch Lake)
+
+
+I. Parties
+
+Transferor:
+
+    Mary Jean Foss ("Jean"), beneficiary of the Flanagan Family 321 Trust,
+    one of the five (5) children of Settlor Dorothy E. Flanagan.
+
+    Address: ___________________________________________
+             ___________________________________________
+
+Transferees:
+
+    Jennifer Yommer ("Jennifer"), daughter of Mary Jean Foss.
+
+    Address: ___________________________________________
+             ___________________________________________
+
+    Martha Foss ("Martha"), daughter of Mary Jean Foss.
+
+    Address: ___________________________________________
+             ___________________________________________
+
+
+II. Background
+
+Jean is a beneficiary of the Flanagan Family 321 Trust established in 2005 by Dorothy E. Flanagan. Jean holds a 25% beneficial interest in the Trust following the redistribution of Elizabeth (Betsy) Young's forfeited interest as described in the Non-Judicial Settlement Agreement.
+
+Jean has made the decision to pass her beneficial interest to her children, Jennifer and Martha, consistent with the Settlor's intent that the Trust benefit her children, grandchildren, and more remote descendants in that order of priority.
+
+
+III. Transfer of Interest
+
+Jean hereby transfers her entire 25% beneficial interest in the Flanagan Family 321 Trust to her children in equal shares:
+
+    Jennifer Yommer: 12.5% beneficial interest
+    Martha Foss: 12.5% beneficial interest
+
+This transfer is effective on the date of the Non-Judicial Settlement Agreement.
+
+
+IV. Rights Transferred
+
+Jennifer and Martha each receive the following rights, in proportion to their respective 12.5% interests:
+
+    a. The right to use the Camp Property under Article V of the Trust
+       Agreement, subject to the equitable allocation determined by the
+       Trustees each spring (Section 5.1).
+
+    b. The right to receive income distributions under Article IV of the
+       Trust Agreement.
+
+    c. The right to vote as beneficiaries on all matters requiring a
+       beneficiary vote, including the sale of the Camp Property
+       (Article 5.5), the election of Trustees (Article 10.2), and the
+       approval of expenses (Article 5.3).
+
+    d. The right of first refusal to purchase any beneficial interest
+       offered for sale under Article 5.7.
+
+    e. The right to purchase the Camp Property at assessed value under
+       Article 5.6 (as grandchildren of the Settlor).
+
+
+V. Obligations Assumed
+
+Jennifer and Martha each assume the following obligations, in proportion to their respective 12.5% interests:
+
+    a. The obligation to pay their proportionate share of expenses as
+       determined by the Trustees under Article 5.3, including utilities,
+       real property taxes, insurance, repairs, maintenance, and capital
+       improvements.
+
+    b. The obligation to comply with all terms of the Trust Agreement
+       as applicable to beneficiaries.
+
+    c. The consequences of failure to pay assessments as set forth in
+       Article 5.3, including the potential denial of use, voting rights,
+       and purchase rights.
+
+
+VI. Jean's Relinquishment
+
+Effective on the date of this transfer:
+
+    a. Jean relinquishes her entire beneficial interest in the Trust.
+
+    b. Jean relinquishes her voting rights as a beneficiary.
+
+    c. Jean is released from all financial obligations under Article 5.3.
+
+    d. Jean's right to use the Camp Property as a beneficiary ceases.
+       Any future use shall be at the invitation and discretion of her
+       children or the Co-Trustees.
+
+
+VII. Acknowledgements
+
+Jennifer and Martha each acknowledge that:
+
+    a. They have read or been provided a copy of the Flanagan Family 321
+       Trust Agreement dated 2005.
+
+    b. They understand the rights and obligations they are assuming.
+
+    c. They have had the opportunity to consult with independent legal
+       counsel before signing this Exhibit.
+
+    d. They accept this transfer voluntarily.
+
+
+VIII. Signatures
+
+Transferor:
+
+Mary Jean Foss
+Signature: ___________________________________________
+Date: ____________________
+
+
+Transferees:
+
+Jennifer Yommer
+Signature: ___________________________________________
+Date: ____________________
+Address: ___________________________________________
+
+
+Martha Foss
+Signature: ___________________________________________
+Date: ____________________
+Address: ___________________________________________
+
+
+Acknowledged by Co-Trustees:
+
+John M. Flanagan, Successor Co-Trustee
+Signature: ___________________________________________
+Date: ____________________
+
+
+Christopher J. Flanagan, Successor Co-Trustee
+Signature: ___________________________________________
+Date: ____________________
+`;
+
+docs['p4_exC'] = `
+Exhibit C
+
+Transfer of Beneficial Interest
+Jane Birkhead to Joey Birkhead and Diane Birkhead
+
+Attached to and incorporated into the Non-Judicial Settlement Agreement
+dated ____________________, 2026
+
+Flanagan Family 321 Trust
+Property: 321 Phillips Way, Ellsworth, ME 04605 (Branch Lake)
+
+
+I. Parties
+
+Transferor:
+
+    Jane Birkhead ("Jane"), beneficiary of the Flanagan Family 321 Trust,
+    one of the five (5) children of Settlor Dorothy E. Flanagan.
+
+    Address: ___________________________________________
+             ___________________________________________
+
+Transferees:
+
+    Joey Birkhead ("Joey"), son of Jane Birkhead.
+
+    Address: ___________________________________________
+             ___________________________________________
+
+    Diane Birkhead ("Diane"), daughter of Jane Birkhead.
+
+    Address: ___________________________________________
+             ___________________________________________
+
+
+II. Background
+
+Jane is a beneficiary of the Flanagan Family 321 Trust established in 2005 by Dorothy E. Flanagan. Jane holds a 25% beneficial interest in the Trust following the redistribution of Elizabeth (Betsy) Young's forfeited interest as described in the Non-Judicial Settlement Agreement.
+
+Jane served as an initial Co-Trustee of the Trust (Article 10.1) and has resigned from that position as documented in Phase 1 of this process.
+
+Jane has made the decision to pass her beneficial interest to her children, Joey and Diane, consistent with the Settlor's intent that the Trust benefit her children, grandchildren, and more remote descendants in that order of priority.
+
+
+III. Transfer of Interest
+
+Jane hereby transfers her entire 25% beneficial interest in the Flanagan Family 321 Trust to her children in equal shares:
+
+    Joey Birkhead: 12.5% beneficial interest
+    Diane Birkhead: 12.5% beneficial interest
+
+This transfer is effective on the date of the Non-Judicial Settlement Agreement.
+
+
+IV. Rights Transferred
+
+Joey and Diane each receive the following rights, in proportion to their respective 12.5% interests:
+
+    a. The right to use the Camp Property under Article V of the Trust
+       Agreement, subject to the equitable allocation determined by the
+       Trustees each spring (Section 5.1).
+
+    b. The right to receive income distributions under Article IV of the
+       Trust Agreement.
+
+    c. The right to vote as beneficiaries on all matters requiring a
+       beneficiary vote, including the sale of the Camp Property
+       (Article 5.5), the election of Trustees (Article 10.2), and the
+       approval of expenses (Article 5.3).
+
+    d. The right of first refusal to purchase any beneficial interest
+       offered for sale under Article 5.7.
+
+    e. The right to purchase the Camp Property at assessed value under
+       Article 5.6 (as grandchildren of the Settlor).
+
+
+V. Obligations Assumed
+
+Joey and Diane each assume the following obligations, in proportion to their respective 12.5% interests:
+
+    a. The obligation to pay their proportionate share of expenses as
+       determined by the Trustees under Article 5.3, including utilities,
+       real property taxes, insurance, repairs, maintenance, and capital
+       improvements.
+
+    b. The obligation to comply with all terms of the Trust Agreement
+       as applicable to beneficiaries.
+
+    c. The consequences of failure to pay assessments as set forth in
+       Article 5.3, including the potential denial of use, voting rights,
+       and purchase rights.
+
+
+VI. Jane's Relinquishment
+
+Effective on the date of this transfer:
+
+    a. Jane relinquishes her entire beneficial interest in the Trust.
+
+    b. Jane relinquishes her voting rights as a beneficiary.
+
+    c. Jane is released from all financial obligations under Article 5.3.
+
+    d. Jane's right to use the Camp Property as a beneficiary ceases.
+       Any future use shall be at the invitation and discretion of her
+       children or the Co-Trustees.
+
+
+VII. Acknowledgements
+
+Joey and Diane each acknowledge that:
+
+    a. They have read or been provided a copy of the Flanagan Family 321
+       Trust Agreement dated 2005.
+
+    b. They understand the rights and obligations they are assuming.
+
+    c. They have had the opportunity to consult with independent legal
+       counsel before signing this Exhibit.
+
+    d. They accept this transfer voluntarily.
+
+
+VIII. Signatures
+
+Transferor:
+
+Jane Birkhead
+Signature: ___________________________________________
+Date: ____________________
+
+
+Transferees:
+
+Joey Birkhead
+Signature: ___________________________________________
+Date: ____________________
+Address: ___________________________________________
+
+
+Diane Birkhead
+Signature: ___________________________________________
+Date: ____________________
+Address: ___________________________________________
+
+
+Acknowledged by Co-Trustees:
+
+John M. Flanagan, Successor Co-Trustee
+Signature: ___________________________________________
+Date: ____________________
+
+
+Christopher J. Flanagan, Successor Co-Trustee
+Signature: ___________________________________________
+Date: ____________________
+`;
+
+docs['p4_exD'] = `
+Exhibit D
+
+Spousal Rights Clarification
+
+Attached to and incorporated into the Non-Judicial Settlement Agreement
+dated ____________________, 2026
+
+Flanagan Family 321 Trust
+Property: 321 Phillips Way, Ellsworth, ME 04605 (Branch Lake)
+
+
+I. Purpose
+
+Article 5.7 of the Flanagan Family 321 Trust Agreement provides that upon the death of a beneficiary, that beneficiary's interest must first be offered to the Trust and then to the remaining beneficiaries. If neither the Trust nor the remaining beneficiaries purchase the interest, it "shall pass to his or her heirs."
+
+The Trust Agreement does not define "heirs" in this context and does not specifically address the rights and responsibilities of spouses of beneficiaries.
+
+This Exhibit clarifies the succession of beneficial interests with respect to spouses and descendants to ensure continuity of the Camp Property within the Settlor's family line.
+
+
+II. Applicability
+
+This clarification applies to all current and future active beneficiaries of the Flanagan Family 321 Trust, including:
+
+    John M. Flanagan
+    Christopher J. Flanagan
+    Jennifer Yommer
+    Martha Foss
+    Joey Birkhead
+    Diane Birkhead
+
+and any future beneficiaries who may acquire an interest in the Trust.
+
+
+III. Succession Upon Death of a Beneficiary
+
+Upon the death of an active beneficiary, the following succession shall apply:
+
+Step 1: Right of First Refusal (Article 5.7)
+
+    The deceased beneficiary's interest must first be offered to the Trust,
+    and then to the remaining active beneficiaries, at the assessed value
+    for municipal tax purposes, as provided in Article 5.7.
+
+Step 2: If Not Purchased -- Spousal Inheritance
+
+    If neither the Trust nor the remaining beneficiaries elect to purchase
+    the deceased beneficiary's interest under Article 5.7, and the deceased
+    beneficiary has no living children or no adult children at the time
+    of death, the surviving spouse of the deceased beneficiary shall
+    inherit:
+
+        a. The deceased beneficiary's entire beneficial interest in the
+           Trust.
+
+        b. All rights associated with that interest, including the right
+           to use the Camp Property, the right to vote as a beneficiary,
+           and the right to receive income distributions.
+
+        c. All obligations associated with that interest, including the
+           obligation to pay the proportionate share of expenses under
+           Article 5.3.
+
+Step 3: If Not Purchased -- Children Exist
+
+    If neither the Trust nor the remaining beneficiaries elect to purchase
+    the deceased beneficiary's interest under Article 5.7, and the deceased
+    beneficiary has living adult children, the interest shall pass to those
+    children in equal shares per stirpes, consistent with the Trust
+    Agreement's definition in Article 1.5.
+
+Step 4: Succession from Surviving Spouse
+
+    Upon the death of a surviving spouse who inherited an interest under
+    Step 2 above, or if that surviving spouse chooses to no longer
+    participate in the Trust:
+
+        a. The beneficial interest shall pass to the children (descendants)
+           of the original beneficiary (the spouse's deceased partner),
+           in equal shares per stirpes.
+
+        b. If the original beneficiary had no children or descendants,
+           the interest shall be redistributed equally among the remaining
+           active beneficiaries of the Trust.
+
+        c. The right of first refusal under Article 5.7 applies before
+           any redistribution under this Step.
+
+
+IV. Spouse Defined
+
+For purposes of this clarification, "spouse" means a person who is legally married to the beneficiary under the laws of the State of Maine at the time of the beneficiary's death.
+
+
+V. Spouse's Rights and Obligations During Participation
+
+A surviving spouse who inherits a beneficial interest shall have:
+
+    a. The same rights as any other beneficiary, including use of the
+       Camp Property, voting rights, and income distributions.
+
+    b. The same obligations as any other beneficiary, including payment
+       of proportionate expenses under Article 5.3.
+
+    c. The right to voluntarily relinquish their interest at any time
+       by written notice to the Co-Trustees. Upon relinquishment, the
+       interest shall pass to the descendants of the original beneficiary
+       or be redistributed as described in Section III, Step 4 above.
+
+
+VI. No Expansion Beyond Family Line
+
+This clarification is intended to keep beneficial interests within the Settlor's family line. A surviving spouse holds the interest as a bridge to the next generation of the Settlor's descendants.
+
+    a. A surviving spouse may not transfer, assign, or sell their
+       inherited interest to any person other than descendants of the
+       original beneficiary, except through the right of first refusal
+       process in Article 5.7.
+
+    b. A surviving spouse's new spouse (through remarriage) does not
+       acquire any beneficial interest in the Trust by virtue of
+       the marriage.
+
+
+VII. Interaction with Article VII (Restriction of Alienation)
+
+This clarification is consistent with Article VII of the Trust Agreement, which prohibits alienation of Trust interests. The succession described herein operates by agreement of all interested persons under 18-B M.R.S. Section 111, not by assignment or alienation.
+
+
+VIII. Signatures
+
+All parties to the Non-Judicial Settlement Agreement acknowledge and agree to this Spousal Rights Clarification by their signatures on the Non-Judicial Settlement Agreement. No additional signatures are required on this Exhibit.
+
+Acknowledged by Co-Trustees:
+
+John M. Flanagan, Successor Co-Trustee
+Signature: ___________________________________________
+Date: ____________________
+
+
+Christopher J. Flanagan, Successor Co-Trustee
+Signature: ___________________________________________
+Date: ____________________
+`;
+
+docs['p5_mou'] = `
+Memorandum of Understanding
+Flanagan Family 321 Trust
+
+Trustee Succession, Interest Redistribution, and Administrative Update
+
+
+Trust: Flanagan Family 321 Trust
+Settlor: Dorothy E. Flanagan (deceased), Ellsworth, Maine
+Date of Trust Agreement: 2005
+Type: Irrevocable
+Property: 321 Phillips Way, Ellsworth, ME 04605 (Branch Lake)
+    Hancock County, Maine
+Deed Reference: TR 31 PG 07 PC 10
+Date of this Memorandum: ____________________, 2026
+
+
+I. Purpose and Authority
+
+This Memorandum of Understanding ("MOU") formalizes all actions taken with respect to the Flanagan Family 321 Trust ("Trust") during the transition process completed in 2026. It serves as a single comprehensive record incorporating the following completed actions:
+
+    A. The resignation of the initial Co-Trustees.
+    B. The election and acceptance of Successor Co-Trustees.
+    C. The recording of an Affidavit of Successor Trustee.
+    D. The transfer of Trust banking and insurance accounts.
+    E. The modification of beneficial interests pursuant to a Non-Judicial
+       Settlement Agreement under 18-B M.R.S. Section 111.
+
+The administrative actions (A through D) were taken under the authority of Article II of the Trust Agreement, which permits modification of administrative provisions for tax or administrative purposes so long as beneficial interests are not materially affected.
+
+The substantive modifications (E) were executed by all interested persons pursuant to a Non-Judicial Settlement Agreement under 18-B M.R.S. Section 111 of the Maine Uniform Trust Code.
+
+
+II. Resignation of Initial Co-Trustees
+
+The initial Co-Trustees named in Article 10.1 of the Trust Agreement have resigned:
+
+    Jane Birkhead -- Resignation dated ______________
+    Elizabeth (Betsy) Young -- Resignation dated ______________
+
+Each resignation was made pursuant to Article 10.2 of the Trust Agreement and 18-B M.R.S. Section 705 of the Maine Uniform Trust Code. Thirty (30) days' notice was provided to all beneficiaries. Signed Resignations of Trustee are incorporated herein by reference.
+
+
+III. Election of Successor Co-Trustees
+
+Pursuant to Article 10.2 of the Trust Agreement, a vote of the beneficiaries was conducted on ____________________, 2026. All five (5) of the Settlor's living children were eligible to vote:
+
+    1. Mary Jean Foss
+    2. John M. Flanagan
+    3. Jane Birkhead
+    4. Elizabeth (Betsy) Young
+    5. Christopher J. Flanagan
+
+Result: A majority of the beneficiaries voted in favor of electing John M. Flanagan and Christopher J. Flanagan as Successor Co-Trustees.
+
+    Votes in Favor: ______
+    Votes Opposed: ______
+    Votes Abstain: ______
+
+Both Successor Co-Trustees accepted their appointment and agreed to be bound by all terms of the Trust Agreement. The signed Record of Beneficiary Vote is incorporated herein by reference.
+
+
+IV. Governance
+
+Pursuant to Article 8.2 of the Trust Agreement, while only two (2) Trustees are serving, the concurrence and joinder of both shall be required for all matters pertaining to the administration of the Trust. This includes the assessment of fees (Article 5.3), the approval of capital improvements, and any potential sale of the Camp Property (Article 5.5).
+
+
+V. Legal Title and Recording
+
+An Affidavit of Successor Trustee was executed by John M. Flanagan and Christopher J. Flanagan and recorded in the Hancock County Registry of Deeds pursuant to 18-B M.R.S. Section 1013 of the Maine Uniform Trust Code.
+
+    Date of Recording: ____________________
+    Book: ______________ Page: ______________
+
+This recording serves as public notice of the change in Trustees and confirms the authority of the Successor Co-Trustees to execute deeds, mortgages, and other instruments on behalf of the Trust with respect to the real property at 321 Phillips Way, Ellsworth, Maine (Deed Ref: TR 31 PG 07 PC 10).
+
+
+VI. Administrative Transfer of Accounts
+
+The Successor Co-Trustees have completed the following administrative transfers:
+
+    Banking: All Trust accounts at Camden National Bank have been
+    transferred to the names of the Successor Co-Trustees.
+    Date completed: ____________________
+
+    Insurance: MMG Insurance Policy DW 0323180 has been updated to
+    name the Successor Co-Trustees as the primary insured fiduciaries.
+    Date completed: ____________________
+
+
+VII. Modification of Beneficial Interests
+
+Pursuant to a Non-Judicial Settlement Agreement dated ____________________, 2026, executed by all interested persons under 18-B M.R.S. Section 111, the following modifications to beneficial interests were made. The complete Non-Judicial Settlement Agreement and its Exhibits are incorporated herein by reference.
+
+A. Betsy Young Interest Forfeiture
+
+Elizabeth (Betsy) Young voluntarily forfeited her entire beneficial interest in the Trust in exchange for:
+
+    Release from all financial obligations under Article 5.3.
+
+    A lifetime use right of one (1) aggregate week of summer use per
+    calendar year for herself, Edward Young, and Jack Young.
+
+This forfeiture includes all voting rights, all claims to sale proceeds, and all rights under Articles 5.5, 5.6, and 5.7. The forfeited interest was redistributed equally (5% each) to the four remaining branches.
+
+See Non-Judicial Settlement Agreement, Section IV, and Exhibit A.
+
+B. Transfer of Jean Foss's Interest
+
+Mary Jean Foss transferred her entire 25% beneficial interest to her children:
+
+    Jennifer Yommer: 12.5%
+    Martha Foss: 12.5%
+
+Jean relinquished all beneficial interest, voting rights, and financial obligations.
+
+See Non-Judicial Settlement Agreement, Section V, and Exhibit B.
+
+C. Transfer of Jane Birkhead's Interest
+
+Jane Birkhead transferred her entire 25% beneficial interest to her children:
+
+    Joey Birkhead: 12.5%
+    Diane Birkhead: 12.5%
+
+Jane relinquished all beneficial interest, voting rights, and financial obligations.
+
+See Non-Judicial Settlement Agreement, Section VI, and Exhibit C.
+
+D. Spousal Rights Clarification
+
+The parties clarified the succession of beneficial interests with respect to spouses, supplementing Article 5.7. Upon a beneficiary's death, the Article 5.7 right of first refusal applies first. If not exercised, the interest passes to the beneficiary's adult children, or if none, to the surviving spouse as a bridge to the next generation.
+
+See Non-Judicial Settlement Agreement, Section VII, and Exhibit D.
+
+
+VIII. Final Ownership Structure
+
+Following all actions described in this MOU, the beneficial interests in the Flanagan Family 321 Trust are as follows:
+
+    Beneficiary                     Interest     Voting
+    -----------------------------------------------
+    John M. Flanagan                25.0%        Yes
+    Christopher J. Flanagan         25.0%        Yes
+    Jennifer Yommer                 12.5%        Yes
+    Martha Foss                     12.5%        Yes
+    Joey Birkhead                   12.5%        Yes
+    Diane Birkhead                  12.5%        Yes
+    -----------------------------------------------
+    Total                          100.0%
+
+    Lifetime Use Right Only (No Interest, No Vote, No Expenses):
+    Elizabeth (Betsy) Young
+    Edward Young
+    Jack Young
+    -- One (1) aggregate week of summer use per year
+
+    No Beneficial Interest (Transferred to Children):
+    Mary Jean Foss
+    Jane Birkhead
+
+
+IX. Successor Co-Trustees
+
+    John M. Flanagan
+    Address: ___________________________________________
+             ___________________________________________
+    Phone: ___________________________________________
+    Email: ___________________________________________
+
+    Christopher J. Flanagan
+    Address: ___________________________________________
+             ___________________________________________
+    Phone: ___________________________________________
+    Email: ___________________________________________
+
+
+X. Incorporated Documents
+
+The following documents are incorporated into this MOU by reference and form part of the complete record of the Trust transition:
+
+Phase 1 -- Trustee Resignations
+    1. Resignation of Trustee -- Jane Birkhead
+    2. Resignation of Trustee -- Elizabeth (Betsy) Young
+
+Phase 2 -- Beneficiary Vote
+    3. Notice of Beneficiary Vote
+    4. Record of Beneficiary Vote for Election of Successor Trustees
+
+Phase 3 -- Recording and Administrative Transfer
+    5. Affidavit of Successor Trustee (recorded at Hancock County
+       Registry of Deeds)
+    6. Bank Authorization Letter -- Camden National Bank
+    7. Insurance Update Request -- MMG Insurance (Policy DW 0323180)
+
+Phase 4 -- Beneficial Interest Modifications
+    8. Non-Judicial Settlement Agreement (18-B M.R.S. Section 111)
+    9. Exhibit A: Betsy Young Forfeiture and Lifetime Use Right
+   10. Exhibit B: Transfer of Interest -- Jean Foss to Jennifer Yommer
+       and Martha Foss
+   11. Exhibit C: Transfer of Interest -- Jane Birkhead to Joey Birkhead
+       and Diane Birkhead
+   12. Exhibit D: Spousal Rights Clarification
+
+Original Trust Document
+   13. Flanagan Family 321 Trust Agreement (2005), Settlor: Dorothy E.
+       Flanagan
+
+
+XI. Governing Law
+
+This MOU and all incorporated documents shall be governed by the laws of the State of Maine, including the Maine Uniform Trust Code (18-B M.R.S.), consistent with Article XIII of the Trust Agreement.
+
+
+XII. Severability
+
+If any provision of this MOU or any incorporated document is found to be invalid or unenforceable, the remaining provisions shall continue in full force and effect.
+
+
+XIII. Acknowledgement and Signatures
+
+Each undersigned party acknowledges that:
+
+    a. They have read and understand the terms of this MOU.
+    b. They have had the opportunity to consult with independent legal
+       counsel.
+    c. They execute this MOU voluntarily.
+    d. All actions described herein have been completed as stated.
+
+
+Successor Co-Trustees:
+
+John M. Flanagan, Successor Co-Trustee
+Signature: ___________________________________________
+Date: ____________________
+
+
+Christopher J. Flanagan, Successor Co-Trustee
+Signature: ___________________________________________
+Date: ____________________
+
+
+Active Beneficiaries:
+
+John M. Flanagan
+Signature: ___________________________________________
+Date: ____________________
+
+
+Christopher J. Flanagan
+Signature: ___________________________________________
+Date: ____________________
+
+
+Jennifer Yommer
+Signature: ___________________________________________
+Date: ____________________
+
+
+Martha Foss
+Signature: ___________________________________________
+Date: ____________________
+
+
+Joey Birkhead
+Signature: ___________________________________________
+Date: ____________________
+
+
+Diane Birkhead
+Signature: ___________________________________________
+Date: ____________________
+
+
+Former Beneficiaries / Transferors:
+
+Mary Jean Foss
+Signature: ___________________________________________
+Date: ____________________
+
+
+Jane Birkhead
+Signature: ___________________________________________
+Date: ____________________
+
+
+Elizabeth (Betsy) Young
+Signature: ___________________________________________
+Date: ____________________
+
+
+Lifetime Use Right Holders:
+
+Edward Young
+Signature: ___________________________________________
+Date: ____________________
+
+
+Jack Young
+Signature: ___________________________________________
+Date: ____________________
+
+
+Notary Acknowledgement
+
+STATE OF ____________________
+COUNTY OF ____________________
+
+On ____________________, 2026, before me, ____________________________ (Notary Public), personally appeared the individuals whose signatures appear above, who proved to me on the basis of satisfactory evidence to be the persons whose names are subscribed to the within instrument and acknowledged to me that they executed the same voluntarily and in their authorized capacities.
+
+I certify under PENALTY OF PERJURY under the laws of the State of ____________________ that the foregoing paragraph is true and correct.
+
+WITNESS my hand and official seal.
+
+Signature: ____________________________ (Seal)
+
+Print Name: ____________________________
+
+My Commission Expires: ____________________
+`;
+
+docs['p5_transmittal'] = `
+Transmittal Letter
+Hancock County Registry of Deeds
+
+
+Date: ____________________, 2026
+
+
+To: Hancock County Registry of Deeds
+    50 State Street, Suite 7
+    Ellsworth, ME 04605
+
+
+From: John M. Flanagan and Christopher J. Flanagan
+      Successor Co-Trustees
+      Flanagan Family 321 Trust
+
+      Address: ___________________________________________
+               ___________________________________________
+
+      Phone: ___________________________________________
+      Email: ___________________________________________
+
+
+Re: Recording of Affidavit of Successor Trustee
+    Flanagan Family 321 Trust
+    Property: 321 Phillips Way, Ellsworth, ME 04605
+    Current Deed Reference: TR 31 PG 07 PC 10
+
+
+Dear Registrar,
+
+Enclosed please find the following documents for recording in connection with the above-referenced property:
+
+    1. Affidavit of Successor Trustee (notarized original)
+
+       This Affidavit is submitted for recording pursuant to 18-B M.R.S.
+       Section 1013 of the Maine Uniform Trust Code. It reflects the
+       change in Trustees of the Flanagan Family 321 Trust from the
+       initial Co-Trustees (Jane Birkhead and Elizabeth Young) to the
+       Successor Co-Trustees (John M. Flanagan and Christopher J.
+       Flanagan).
+
+Supporting documents enclosed for reference (not for recording unless
+required):
+
+    2. Resignation of Trustee -- Jane Birkhead
+    3. Resignation of Trustee -- Elizabeth (Betsy) Young
+    4. Record of Beneficiary Vote
+    5. Copy of the Flanagan Family 321 Trust Agreement (2005)
+
+
+Recording Fees
+
+Enclosed is a check in the amount of \$______________ payable to
+"Hancock County Registry of Deeds" to cover the recording fee.
+
+Please return the recorded original and any receipts to the address
+listed above.
+
+
+Property Description
+
+The property held by the Trust is described in Schedule A of the Trust
+Agreement and is currently recorded at:
+
+    Book/Tract: TR 31
+    Page: PG 07
+    Plan/Card: PC 10
+
+The property is located at 321 Phillips Way, Ellsworth, Hancock County,
+Maine 04605, on Branch Lake.
+
+
+Contact Information
+
+If you have any questions or require additional documentation, please
+contact:
+
+    Name: ___________________________________________
+    Phone: ___________________________________________
+    Email: ___________________________________________
+
+
+Thank you for your assistance.
+
+Respectfully,
+
+
+John M. Flanagan, Successor Co-Trustee
+Signature: ___________________________________________
+Date: ____________________
+
+
+Christopher J. Flanagan, Successor Co-Trustee
+Signature: ___________________________________________
+Date: ____________________
+`;
+
+docs['p5_checklist'] = `
+Master Document Checklist
+Flanagan Family 321 Trust Transition -- 2026
+
+Use this checklist to verify that all documents have been completed,
+signed, notarized, and filed as required.
+
+
+Phase 1: Trustee Resignations
+
+    [ ] Resignation of Trustee -- Jane Birkhead
+        Signed: ____________________
+        Notarized: Yes / No
+        Copies sent to all beneficiaries: Yes / No
+        Date sent: ____________________
+
+    [ ] Resignation of Trustee -- Elizabeth (Betsy) Young
+        Signed: ____________________
+        Notarized: Yes / No
+        Copies sent to all beneficiaries: Yes / No
+        Date sent: ____________________
+
+
+Phase 2: Beneficiary Vote
+
+    [ ] Notice of Beneficiary Vote
+        Date sent to all beneficiaries: ____________________
+        Method of delivery: ____________________
+        All 5 beneficiaries notified: Yes / No
+
+    [ ] Record of Beneficiary Vote
+        Date of vote: ____________________
+        Votes in Favor: ______
+        Votes Opposed: ______
+        Votes Abstain: ______
+        Result: Approved / Not Approved
+        All voter signatures obtained: Yes / No
+        Successor Trustee acceptances signed: Yes / No
+        Certified: Yes / No
+        Notarized: Yes / No
+
+
+Phase 3: Recording and Administrative Transfer
+
+    [ ] Affidavit of Successor Trustee
+        Signed by both Successor Co-Trustees: Yes / No
+        Notarized: Yes / No
+        Submitted to Hancock County Registry of Deeds: Yes / No
+        Date submitted: ____________________
+        Recording confirmed: Yes / No
+        Book: ______________ Page: ______________
+
+    [ ] Transmittal Letter to Hancock County Registry of Deeds
+        Signed: ____________________
+        Recording fee enclosed: Yes / No
+        Amount: \$______________
+
+    [ ] Bank Authorization Letter -- Camden National Bank
+        Signed by both Successor Co-Trustees: Yes / No
+        Submitted to bank: Yes / No
+        Date submitted: ____________________
+        Bank confirmation received: Yes / No
+        Date confirmed: ____________________
+        New account access received: Yes / No
+
+    [ ] Insurance Update Request -- MMG Insurance
+        Signed by both Successor Co-Trustees: Yes / No
+        Submitted to MMG: Yes / No
+        Date submitted: ____________________
+        Confirmation received: Yes / No
+        Updated declarations page received: Yes / No
+        Date confirmed: ____________________
+        Additional insured parties reviewed: Yes / No
+
+
+Phase 4: Beneficial Interest Modifications
+
+    [ ] Non-Judicial Settlement Agreement
+        All 13 signatures obtained: Yes / No
+            Current Beneficiaries (5):
+                [ ] Mary Jean Foss
+                [ ] John M. Flanagan
+                [ ] Jane Birkhead
+                [ ] Elizabeth (Betsy) Young
+                [ ] Christopher J. Flanagan
+            Successor Beneficiaries (4):
+                [ ] Jennifer Yommer
+                [ ] Martha Foss
+                [ ] Joey Birkhead
+                [ ] Diane Birkhead
+            Affected Persons (2):
+                [ ] Edward Young
+                [ ] Jack Young
+            Successor Co-Trustees (2):
+                [ ] John M. Flanagan (as Trustee)
+                [ ] Christopher J. Flanagan (as Trustee)
+        Notarized: Yes / No
+        Date executed: ____________________
+
+    [ ] Exhibit A: Betsy Young Forfeiture and Lifetime Use Right
+        Signed by Betsy Young: Yes / No
+        Signed by Edward Young: Yes / No
+        Signed by Jack Young: Yes / No
+        Signed by both Co-Trustees: Yes / No
+
+    [ ] Exhibit B: Transfer of Interest -- Jean Foss
+        Signed by Mary Jean Foss: Yes / No
+        Signed by Jennifer Yommer: Yes / No
+        Signed by Martha Foss: Yes / No
+        Signed by both Co-Trustees: Yes / No
+
+    [ ] Exhibit C: Transfer of Interest -- Jane Birkhead
+        Signed by Jane Birkhead: Yes / No
+        Signed by Joey Birkhead: Yes / No
+        Signed by Diane Birkhead: Yes / No
+        Signed by both Co-Trustees: Yes / No
+
+    [ ] Exhibit D: Spousal Rights Clarification
+        Signed by both Co-Trustees: Yes / No
+
+
+Phase 5: Final MOU and Filing
+
+    [ ] Final Memorandum of Understanding
+        All signatures obtained: Yes / No
+            Successor Co-Trustees (2):
+                [ ] John M. Flanagan
+                [ ] Christopher J. Flanagan
+            Active Beneficiaries (6):
+                [ ] John M. Flanagan
+                [ ] Christopher J. Flanagan
+                [ ] Jennifer Yommer
+                [ ] Martha Foss
+                [ ] Joey Birkhead
+                [ ] Diane Birkhead
+            Former Beneficiaries / Transferors (3):
+                [ ] Mary Jean Foss
+                [ ] Jane Birkhead
+                [ ] Elizabeth (Betsy) Young
+            Lifetime Use Right Holders (2):
+                [ ] Edward Young
+                [ ] Jack Young
+        Notarized: Yes / No
+        Date executed: ____________________
+
+    [ ] Copies distributed to all parties: Yes / No
+        Date distributed: ____________________
+
+
+Supporting Documents (Maintain on File)
+
+    [ ] Original Flanagan Family 321 Trust Agreement (2005)
+    [ ] Schedule A (property description)
+    [ ] Original deed (TR 31 PG 07 PC 10)
+    [ ] Recorded Affidavit of Successor Trustee (certified copy)
+    [ ] Camden National Bank confirmation letter
+    [ ] MMG Insurance updated declarations page
+    [ ] All signed originals stored in: ____________________
+
+
+Notes
+
+________________________________________________________________________
+
+________________________________________________________________________
+
+________________________________________________________________________
+
+________________________________________________________________________
+
+________________________________________________________________________
+`;
+
+
+function togglePhase(n) {
+  const phase = document.querySelector(`.phase[data-phase="${n}"]`);
+  const panel = document.getElementById(`panel-${n}`);
+  const wasActive = phase.classList.contains('active');
+
+  // Close all
+  document.querySelectorAll('.phase').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.doc-list-panel').forEach(p => p.classList.remove('visible'));
+
+  if (!wasActive) {
+    phase.classList.add('active');
+    panel.classList.add('visible');
+  }
+}
+
+function openDoc(key, title) {
+  document.getElementById('doc-title').textContent = title;
+  document.getElementById('doc-body').textContent = docs[key];
+  document.getElementById('overlay').classList.add('visible');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeDoc() {
+  document.getElementById('overlay').classList.remove('visible');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeDoc();
+});
+</script>
+</body>
+</html>
