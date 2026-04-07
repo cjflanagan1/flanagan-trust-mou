@@ -279,6 +279,23 @@
     margin-top: 40px;
   }
 
+  .visit-counter {
+    display: inline-block;
+    background: #1a3a4a;
+    color: #e8dcc8;
+    padding: 6px 16px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    margin-bottom: 12px;
+    font-family: 'Courier New', monospace;
+  }
+
+  .visit-counter .count-num {
+    font-weight: 700;
+    color: #8b6914;
+    font-size: 0.95rem;
+  }
+
   @media (max-width: 600px) {
     header h1 { font-size: 1.3rem; }
     .doc-body { padding: 16px; font-size: 0.7rem; }
@@ -389,6 +406,7 @@
 </div>
 
 <footer>
+  <div class="visit-counter">Page visits: <span class="count-num" id="visit-count">...</span></div><br>
   Flanagan Family 321 Trust &mdash; Draft Documents for Review &mdash; Not Legal Advice<br>
   All documents should be reviewed by a Maine attorney before execution.
 </footer>
@@ -3245,6 +3263,36 @@ function closeDoc() {
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') closeDoc();
 });
+
+// Visit counter using CountAPI
+(function() {
+  const NAMESPACE = 'flanagan-trust-mou-321';
+  const KEY = 'page-visits';
+
+  fetch('https://api.counterapi.dev/v1/' + NAMESPACE + '/' + KEY + '/up')
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      var el = document.getElementById('visit-count');
+      if (el && data && data.count !== undefined) {
+        el.textContent = data.count;
+      }
+    })
+    .catch(function() {
+      // Fallback: try alternative counter
+      fetch('https://api.countapi.xyz/hit/flanagan-trust-mou-321/visits')
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          var el = document.getElementById('visit-count');
+          if (el && data && data.value !== undefined) {
+            el.textContent = data.value;
+          }
+        })
+        .catch(function() {
+          var el = document.getElementById('visit-count');
+          if (el) el.textContent = '--';
+        });
+    });
+})();
 </script>
 </body>
 </html>
