@@ -365,6 +365,7 @@
         <a class="doc-link" onclick="openDoc('p4_exB', 'Exhibit B \u2014 Transfer of Interest: Jean Foss')">Exhibit B &mdash; Transfer of Interest: Jean Foss<div class="doc-summary">Transfer of Jean's 25% to Jennifer Yommer and Martha Foss</div></a>
         <a class="doc-link" onclick="openDoc('p4_exC', 'Exhibit C \u2014 Transfer of Interest: Jane Birkhead')">Exhibit C &mdash; Transfer of Interest: Jane Birkhead<div class="doc-summary">Transfer of Jane's 25% to Joey and Diane Birkhead</div></a>
         <a class="doc-link" onclick="openDoc('p4_exD', 'Exhibit D \u2014 Spousal Rights Clarification')">Exhibit D &mdash; Spousal Rights Clarification<div class="doc-summary">Defines succession rules for spouses and descendants</div></a>
+        <a class="doc-link" onclick="openDoc('p4_exE', 'Exhibit E \u2014 Simplified Future Trustee Succession')">Exhibit E &mdash; Simplified Future Trustee Succession<div class="doc-summary">Step-by-step process for future trustee changes without an attorney</div></a>
       </div>
     </div>
 
@@ -470,6 +471,11 @@ explanations['p4_exD'] = '<h4>About This Document</h4>' +
   '<div class="explain-section"><span class="explain-label">What it does:</span> This Exhibit clarifies what happens to a beneficiary\'s interest when they die — specifically addressing the role of their spouse. The original Trust (Article 5.7) uses the word "heirs" without defining it and doesn\'t mention spouses at all. This creates a gap that could lead to disputes or unintended consequences. This Exhibit fills that gap.</div>' +
   '<div class="explain-section"><span class="explain-label">Why it is organized this way:</span> It walks through succession as a step-by-step process: (1) Article 5.7\'s right of first refusal applies first, (2) if not exercised and there are no adult children, the spouse inherits, (3) if there are adult children, they inherit directly, (4) when a spouse who inherited later dies, the interest passes to the original beneficiary\'s descendants. It then defines "spouse," states the spouse\'s rights and obligations, and critically prevents expansion beyond the family line (a new spouse through remarriage gets nothing). This keeps the property in Dorothy Flanagan\'s bloodline.</div>' +
   '<div class="explain-section"><span class="explain-label">Why timing matters:</span> This clarification applies to the NEW beneficiary structure (the six active beneficiaries after Exhibits A-C). It would make no sense to define spousal rights before knowing who the active beneficiaries are. It also interacts with Article 5.7 and Article VII (anti-alienation), so the NJSA framework is needed to give it legal force.</div>';
+
+explanations['p4_exE'] = '<h4>About This Document</h4>' +
+  '<div class="explain-section"><span class="explain-label">What it does:</span> This Exhibit creates a repeatable, self-service process for changing trustees in the future without hiring a lawyer. It lays out a step-by-step procedure: resignation (or vacancy), nomination, vote, acceptance, Affidavit recording, and administrative transfers. It also establishes a process for removing a trustee by majority vote and maintains templates from this transition as a toolkit.</div>' +
+  '<div class="explain-section"><span class="explain-label">Why it is organized this way:</span> It mirrors the exact sequence that was followed in Phases 1-3 of this transition, but distills it into a general-purpose procedure. Each step references the specific Trust Article or Maine statute that authorizes it. The templates section points back to the Phase 1-3 documents so future beneficiaries don\'t have to start from scratch. The removal section and number-of-trustees section address scenarios the original Trust didn\'t contemplate.</div>' +
+  '<div class="explain-section"><span class="explain-label">Why timing matters:</span> This is placed in Phase 4 (the NJSA) rather than as a standalone document because the NJSA under 18-B M.R.S. Section 111 gives it binding legal force. A standalone governance document adopted by the trustees alone might be challenged as exceeding their administrative authority under Article II. By including it in an agreement signed by all interested persons, it has the same weight as the other modifications. It also must come after the current transition is complete so it can reference the templates created during that process.</div>';
 
 explanations['p5_mou'] = '<h4>About This Document</h4>' +
   '<div class="explain-section"><span class="explain-label">What it does:</span> This is the master Memorandum of Understanding — a single comprehensive document that ties all five phases together into one record. It recaps every action taken (resignations, vote, recording, account transfers, NJSA modifications), states the final ownership structure, and lists all 13 incorporated documents. Think of it as the "table of contents and executive summary" for the entire transition.</div>' +
@@ -1397,316 +1403,351 @@ docs['p4_njsa'] = `
   76 | 
   77 |     D. The clarification of spousal rights upon the death of a beneficiary.
   78 | 
-  79 | Each of these matters is set forth in detail below and in the attached Exhibits.
-  80 | 
+  79 |     E. The establishment of a simplified mechanism for future trustee
+  80 |        transitions that can be completed without retaining an attorney.
   81 | 
-  82 | IV. Betsy Young Interest Forfeiture and Lifetime Use Right
+  82 | Each of these matters is set forth in detail below and in the attached Exhibits.
   83 | 
-  84 | A. Forfeiture
-  85 | 
-  86 | Elizabeth (Betsy) Young voluntarily forfeits her entire beneficial interest in the Flanagan Family 321 Trust, including all rights to income distributions under Article IV, all rights to use of the Camp Property under Article V, and all voting rights as a beneficiary.
-  87 | 
-  88 | This forfeiture extends to her heirs, Edward Young and Jack Young, who likewise forfeit any current or future beneficial interest they may hold or claim in the Trust.
-  89 | 
-  90 | B. Consideration
-  91 | 
-  92 | In consideration for this forfeiture and in exchange for being released from all financial obligations under Article 5.3 of the Trust Agreement (including assessments for utilities, real property taxes, insurance, repairs, maintenance, and capital improvements), Elizabeth Young, Edward Young, and Jack Young are granted the following:
-  93 | 
-  94 |     1. One (1) aggregate week of summer use of the Camp Property per
-  95 |        calendar year, for the remainder of their respective lifetimes.
+  84 | 
+  85 | IV. Betsy Young Interest Forfeiture and Lifetime Use Right
+  86 | 
+  87 | A. Forfeiture
+  88 | 
+  89 | Elizabeth (Betsy) Young voluntarily forfeits her entire beneficial interest in the Flanagan Family 321 Trust, including all rights to income distributions under Article IV, all rights to use of the Camp Property under Article V, and all voting rights as a beneficiary.
+  90 | 
+  91 | This forfeiture extends to her heirs, Edward Young and Jack Young, who likewise forfeit any current or future beneficial interest they may hold or claim in the Trust.
+  92 | 
+  93 | B. Consideration
+  94 | 
+  95 | In consideration for this forfeiture and in exchange for being released from all financial obligations under Article 5.3 of the Trust Agreement (including assessments for utilities, real property taxes, insurance, repairs, maintenance, and capital improvements), Elizabeth Young, Edward Young, and Jack Young are granted the following:
   96 | 
-  97 |     2. This use right is personal and non-transferable. It may not be
-  98 |        assigned, sold, or conveyed to any person.
+  97 |     1. One (1) aggregate week of summer use of the Camp Property per
+  98 |        calendar year, for the remainder of their respective lifetimes.
   99 | 
- 100 |     3. The specific dates of use shall be requested before the beginning
- 101 |        of each summer season. The Successor Co-Trustees will make every
- 102 |        reasonable effort to accommodate the requested dates in coordination
- 103 |        with the schedules of all active beneficiaries.
- 104 | 
- 105 |     4. All scheduling is subject to the discretion of the Co-Trustees.
- 106 | 
- 107 | C. No Claim to Proceeds
- 108 | 
- 109 | This forfeiture includes any and all current and future claims to:
- 110 | 
- 111 |     Sale proceeds, equity, or distributions should the Property be sold
- 112 |     in whole or in part under Article 5.5 or otherwise.
+ 100 |     2. This use right is personal and non-transferable. It may not be
+ 101 |        assigned, sold, or conveyed to any person.
+ 102 | 
+ 103 |     3. The specific dates of use shall be requested before the beginning
+ 104 |        of each summer season. The Successor Co-Trustees will make every
+ 105 |        reasonable effort to accommodate the requested dates in coordination
+ 106 |        with the schedules of all active beneficiaries.
+ 107 | 
+ 108 |     4. All scheduling is subject to the discretion of the Co-Trustees.
+ 109 | 
+ 110 | C. No Claim to Proceeds
+ 111 | 
+ 112 | This forfeiture includes any and all current and future claims to:
  113 | 
- 114 |     Any right to purchase the Camp Property under Article 5.6.
- 115 | 
- 116 |     Any right to participate in voting for or against the sale of the
- 117 |     Camp Property under Article 5.5.
+ 114 |     Sale proceeds, equity, or distributions should the Property be sold
+ 115 |     in whole or in part under Article 5.5 or otherwise.
+ 116 | 
+ 117 |     Any right to purchase the Camp Property under Article 5.6.
  118 | 
- 119 |     Any right to nominate or vote for the removal of a Trustee under
- 120 |     Article 10.2.
+ 119 |     Any right to participate in voting for or against the sale of the
+ 120 |     Camp Property under Article 5.5.
  121 | 
- 122 | D. Redistribution
- 123 | 
- 124 | The beneficial interest formerly held by Elizabeth (Betsy) Young is hereby redistributed equally to the four (4) remaining branches:
- 125 | 
- 126 |     Mary Jean Foss branch: additional 5%
- 127 |     John M. Flanagan: additional 5%
- 128 |     Jane Birkhead branch: additional 5%
- 129 |     Christopher J. Flanagan: additional 5%
- 130 | 
- 131 | Following this redistribution, each of the four remaining branches holds a 25% beneficial interest in the Trust.
- 132 | 
- 133 | E. Re-Entry Provision
- 134 | 
- 135 | If Elizabeth (Betsy) Young or her heirs desire to return to being active beneficiaries of the Trust in the future, paying their share of annual expenses, the then-active beneficiaries shall vote on the terms and conditions of such re-entry. Approval shall require a majority vote of the active beneficiaries at that time.
- 136 | 
- 137 | The complete terms of this forfeiture and use right are set forth in the attached Exhibit A.
- 138 | 
+ 122 |     Any right to nominate or vote for the removal of a Trustee under
+ 123 |     Article 10.2.
+ 124 | 
+ 125 | D. Redistribution
+ 126 | 
+ 127 | The beneficial interest formerly held by Elizabeth (Betsy) Young is hereby redistributed equally to the four (4) remaining branches:
+ 128 | 
+ 129 |     Mary Jean Foss branch: additional 5%
+ 130 |     John M. Flanagan: additional 5%
+ 131 |     Jane Birkhead branch: additional 5%
+ 132 |     Christopher J. Flanagan: additional 5%
+ 133 | 
+ 134 | Following this redistribution, each of the four remaining branches holds a 25% beneficial interest in the Trust.
+ 135 | 
+ 136 | E. Re-Entry Provision
+ 137 | 
+ 138 | If Elizabeth (Betsy) Young or her heirs desire to return to being active beneficiaries of the Trust in the future, paying their share of annual expenses, the then-active beneficiaries shall vote on the terms and conditions of such re-entry. Approval shall require a majority vote of the active beneficiaries at that time.
  139 | 
- 140 | V. Transfer of Beneficial Interest -- Mary Jean Foss
+ 140 | The complete terms of this forfeiture and use right are set forth in the attached Exhibit A.
  141 | 
- 142 | Mary Jean Foss hereby transfers her entire 25% beneficial interest in the Flanagan Family 321 Trust to her children in equal shares:
- 143 | 
- 144 |     Jennifer Yommer: 12.5% beneficial interest
- 145 |     Martha Foss: 12.5% beneficial interest
+ 142 | 
+ 143 | V. Transfer of Beneficial Interest -- Mary Jean Foss
+ 144 | 
+ 145 | Mary Jean Foss hereby transfers her entire 25% beneficial interest in the Flanagan Family 321 Trust to her children in equal shares:
  146 | 
- 147 | Effective on the date of this Agreement:
- 148 | 
- 149 |     1. Jennifer Yommer and Martha Foss assume all rights of their mother's
- 150 |        beneficial interest, including the right to use the Camp Property,
- 151 |        the right to vote as beneficiaries, and the right to receive income
- 152 |        distributions under Article IV.
- 153 | 
- 154 |     2. Jennifer Yommer and Martha Foss assume all obligations associated
- 155 |        with this interest, including the obligation to pay their proportionate
- 156 |        share of expenses under Article 5.3.
- 157 | 
- 158 |     3. Mary Jean Foss relinquishes her beneficial interest, voting rights,
- 159 |        and financial obligations under the Trust.
+ 147 |     Jennifer Yommer: 12.5% beneficial interest
+ 148 |     Martha Foss: 12.5% beneficial interest
+ 149 | 
+ 150 | Effective on the date of this Agreement:
+ 151 | 
+ 152 |     1. Jennifer Yommer and Martha Foss assume all rights of their mother's
+ 153 |        beneficial interest, including the right to use the Camp Property,
+ 154 |        the right to vote as beneficiaries, and the right to receive income
+ 155 |        distributions under Article IV.
+ 156 | 
+ 157 |     2. Jennifer Yommer and Martha Foss assume all obligations associated
+ 158 |        with this interest, including the obligation to pay their proportionate
+ 159 |        share of expenses under Article 5.3.
  160 | 
- 161 | The complete terms of this transfer are set forth in the attached Exhibit B.
- 162 | 
+ 161 |     3. Mary Jean Foss relinquishes her beneficial interest, voting rights,
+ 162 |        and financial obligations under the Trust.
  163 | 
- 164 | VI. Transfer of Beneficial Interest -- Jane Birkhead
+ 164 | The complete terms of this transfer are set forth in the attached Exhibit B.
  165 | 
- 166 | Jane Birkhead hereby transfers her entire 25% beneficial interest in the Flanagan Family 321 Trust to her children in equal shares:
- 167 | 
- 168 |     Joey Birkhead: 12.5% beneficial interest
- 169 |     Diane Birkhead: 12.5% beneficial interest
+ 166 | 
+ 167 | VI. Transfer of Beneficial Interest -- Jane Birkhead
+ 168 | 
+ 169 | Jane Birkhead hereby transfers her entire 25% beneficial interest in the Flanagan Family 321 Trust to her children in equal shares:
  170 | 
- 171 | Effective on the date of this Agreement:
- 172 | 
- 173 |     1. Joey Birkhead and Diane Birkhead assume all rights of their mother's
- 174 |        beneficial interest, including the right to use the Camp Property,
- 175 |        the right to vote as beneficiaries, and the right to receive income
- 176 |        distributions under Article IV.
- 177 | 
- 178 |     2. Joey Birkhead and Diane Birkhead assume all obligations associated
- 179 |        with this interest, including the obligation to pay their proportionate
- 180 |        share of expenses under Article 5.3.
- 181 | 
- 182 |     3. Jane Birkhead relinquishes her beneficial interest, voting rights,
- 183 |        and financial obligations under the Trust.
+ 171 |     Joey Birkhead: 12.5% beneficial interest
+ 172 |     Diane Birkhead: 12.5% beneficial interest
+ 173 | 
+ 174 | Effective on the date of this Agreement:
+ 175 | 
+ 176 |     1. Joey Birkhead and Diane Birkhead assume all rights of their mother's
+ 177 |        beneficial interest, including the right to use the Camp Property,
+ 178 |        the right to vote as beneficiaries, and the right to receive income
+ 179 |        distributions under Article IV.
+ 180 | 
+ 181 |     2. Joey Birkhead and Diane Birkhead assume all obligations associated
+ 182 |        with this interest, including the obligation to pay their proportionate
+ 183 |        share of expenses under Article 5.3.
  184 | 
- 185 | The complete terms of this transfer are set forth in the attached Exhibit C.
- 186 | 
+ 185 |     3. Jane Birkhead relinquishes her beneficial interest, voting rights,
+ 186 |        and financial obligations under the Trust.
  187 | 
- 188 | VII. Clarification of Spousal Rights
+ 188 | The complete terms of this transfer are set forth in the attached Exhibit C.
  189 | 
- 190 | The Trust Agreement does not specifically address the rights and responsibilities of the spouses of beneficiaries upon the death or incapacity of a beneficiary. Article 5.7 references a deceased beneficiary's "heirs" but does not define the term or clarify spousal succession.
- 191 | 
- 192 | The parties agree to the following clarification:
- 193 | 
- 194 | A. Spousal Inheritance
- 195 | 
- 196 | In the event of the death of an active beneficiary who has no living heirs or no adult heirs at the time of death, the surviving spouse of that beneficiary shall inherit:
- 197 | 
- 198 |     1. The deceased beneficiary's beneficial interest in the Trust.
- 199 | 
- 200 |     2. All rights associated with that interest, including the right to
- 201 |        use the Camp Property and the right to vote as a beneficiary.
+ 190 | 
+ 191 | VII. Clarification of Spousal Rights
+ 192 | 
+ 193 | The Trust Agreement does not specifically address the rights and responsibilities of the spouses of beneficiaries upon the death or incapacity of a beneficiary. Article 5.7 references a deceased beneficiary's "heirs" but does not define the term or clarify spousal succession.
+ 194 | 
+ 195 | The parties agree to the following clarification:
+ 196 | 
+ 197 | A. Spousal Inheritance
+ 198 | 
+ 199 | In the event of the death of an active beneficiary who has no living heirs or no adult heirs at the time of death, the surviving spouse of that beneficiary shall inherit:
+ 200 | 
+ 201 |     1. The deceased beneficiary's beneficial interest in the Trust.
  202 | 
- 203 |     3. All obligations associated with that interest, including the
- 204 |        obligation to pay the proportionate share of expenses under
- 205 |        Article 5.3.
- 206 | 
- 207 | B. Continuation of Family Line
- 208 | 
- 209 | Upon the death of the surviving spouse, or if the surviving spouse chooses to no longer participate in the Trust, the beneficial interest shall pass to the children (descendants) of the original beneficiary.
- 210 | 
- 211 | C. No Heirs or Descendants
- 212 | 
- 213 | If the original beneficiary has no children or descendants, and the surviving spouse has died or is no longer participating, the beneficial interest shall be redistributed equally among the remaining active beneficiaries of the Trust.
- 214 | 
- 215 | D. Interaction with Article 5.7
- 216 | 
- 217 | This clarification is intended to supplement, not replace, Article 5.7. The right of first refusal provisions in Article 5.7 (offering a deceased beneficiary's interest first to the Trust, then to remaining beneficiaries) remain in effect. This clarification addresses only the succession of interests that are not purchased under Article 5.7.
- 218 | 
- 219 | The complete terms of this clarification are set forth in the attached Exhibit D.
- 220 | 
+ 203 |     2. All rights associated with that interest, including the right to
+ 204 |        use the Camp Property and the right to vote as a beneficiary.
+ 205 | 
+ 206 |     3. All obligations associated with that interest, including the
+ 207 |        obligation to pay the proportionate share of expenses under
+ 208 |        Article 5.3.
+ 209 | 
+ 210 | B. Continuation of Family Line
+ 211 | 
+ 212 | Upon the death of the surviving spouse, or if the surviving spouse chooses to no longer participate in the Trust, the beneficial interest shall pass to the children (descendants) of the original beneficiary.
+ 213 | 
+ 214 | C. No Heirs or Descendants
+ 215 | 
+ 216 | If the original beneficiary has no children or descendants, and the surviving spouse has died or is no longer participating, the beneficial interest shall be redistributed equally among the remaining active beneficiaries of the Trust.
+ 217 | 
+ 218 | D. Interaction with Article 5.7
+ 219 | 
+ 220 | This clarification is intended to supplement, not replace, Article 5.7. The right of first refusal provisions in Article 5.7 (offering a deceased beneficiary's interest first to the Trust, then to remaining beneficiaries) remain in effect. This clarification addresses only the succession of interests that are not purchased under Article 5.7.
  221 | 
- 222 | VIII. Updated Ownership Structure
+ 222 | The complete terms of this clarification are set forth in the attached Exhibit D.
  223 | 
- 224 | Following the execution of this Agreement, the beneficial interests in the Flanagan Family 321 Trust shall be as follows:
- 225 | 
- 226 |     John M. Flanagan                  25.0%
- 227 |     Christopher J. Flanagan           25.0%
- 228 |     Jennifer Yommer                   12.5%
- 229 |     Martha Foss                       12.5%
- 230 |     Joey Birkhead                     12.5%
- 231 |     Diane Birkhead                    12.5%
- 232 |                                      ------
- 233 |     Total                            100.0%
- 234 | 
- 235 |     Elizabeth (Betsy) Young, Edward Young, and Jack Young:
- 236 |     Lifetime use right of one (1) aggregate week per summer.
- 237 |     No beneficial interest. No voting rights. No financial obligations.
- 238 | 
- 239 |     Mary Jean Foss: No beneficial interest (transferred to children).
- 240 |     Jane Birkhead: No beneficial interest (transferred to children).
- 241 | 
- 242 | 
- 243 | IX. Active Beneficiaries and Voting
- 244 | 
- 245 | Following this Agreement, the active beneficiaries entitled to vote on Trust matters shall be:
- 246 | 
- 247 |     1. John M. Flanagan (25%)
- 248 |     2. Christopher J. Flanagan (25%)
- 249 |     3. Jennifer Yommer (12.5%)
- 250 |     4. Martha Foss (12.5%)
- 251 |     5. Joey Birkhead (12.5%)
- 252 |     6. Diane Birkhead (12.5%)
- 253 | 
- 254 | A majority of the active beneficiaries shall be required for any vote under the Trust Agreement unless the Trust Agreement specifies a different threshold.
+ 224 | 
+ 225 | VIII. Simplified Future Trustee Succession
+ 226 | 
+ 227 | To minimize future legal costs and administrative delays, the parties agree to establish a simplified, repeatable process for any future change in trustees. This mechanism allows the active beneficiaries to elect successor trustees, execute the required documents, and record the change at the Hancock County Registry of Deeds without retaining an attorney.
+ 228 | 
+ 229 | The process requires:
+ 230 | 
+ 231 |     1. A written Resignation of Trustee (or documentation of vacancy
+ 232 |        due to death or incapacity) delivered to all active beneficiaries.
+ 233 | 
+ 234 |     2. A majority vote of the active beneficiaries to elect the
+ 235 |        successor trustee(s), documented in a written Record of
+ 236 |        Beneficiary Vote with signatures.
+ 237 | 
+ 238 |     3. A written acceptance by the successor trustee(s).
+ 239 | 
+ 240 |     4. The execution and recording of a new Affidavit of Successor
+ 241 |        Trustee in the Hancock County Registry of Deeds pursuant to
+ 242 |        18-B M.R.S. Section 1013.
+ 243 | 
+ 244 |     5. Per Article 12.1 of the Trust Agreement, a copy of such
+ 245 |        instruments certified by a notary public shall be deemed
+ 246 |        sufficient proof of authority for all third parties (banks,
+ 247 |        insurance companies, and government agencies).
+ 248 | 
+ 249 | The current Co-Trustees shall maintain template documents from this transition (Phases 1-3) to serve as a self-service toolkit for future transitions.
+ 250 | 
+ 251 | This mechanism also establishes a process for the removal of a trustee by majority vote of the active beneficiaries, with a 30-day response period for the trustee whose removal is sought.
+ 252 | 
+ 253 | The complete terms of this mechanism are set forth in the attached Exhibit E.
+ 254 | 
  255 | 
- 256 | 
- 257 | X. Governing Law
- 258 | 
- 259 | This Agreement shall be governed by the laws of the State of Maine, including the Maine Uniform Trust Code (18-B M.R.S.), consistent with Article XIII of the Trust Agreement.
- 260 | 
- 261 | 
- 262 | XI. Severability
- 263 | 
- 264 | If any provision of this Agreement is found to be invalid or unenforceable, the remaining provisions shall continue in full force and effect.
- 265 | 
- 266 | 
- 267 | XII. Entire Agreement
+ 256 | IX. Updated Ownership Structure
+ 257 | 
+ 258 | Following the execution of this Agreement, the beneficial interests in the Flanagan Family 321 Trust shall be as follows:
+ 259 | 
+ 260 |     John M. Flanagan                  25.0%
+ 261 |     Christopher J. Flanagan           25.0%
+ 262 |     Jennifer Yommer                   12.5%
+ 263 |     Martha Foss                       12.5%
+ 264 |     Joey Birkhead                     12.5%
+ 265 |     Diane Birkhead                    12.5%
+ 266 |                                      ------
+ 267 |     Total                            100.0%
  268 | 
- 269 | This Agreement, together with its attached Exhibits, constitutes the complete agreement of the parties with respect to the matters addressed herein. This Agreement supplements the Flanagan Family 321 Trust Agreement dated 2005 and does not replace or revoke it except as specifically modified herein.
- 270 | 
- 271 | 
- 272 | XIII. Exhibits
- 273 | 
- 274 | The following Exhibits are attached to and incorporated into this Agreement:
+ 269 |     Elizabeth (Betsy) Young, Edward Young, and Jack Young:
+ 270 |     Lifetime use right of one (1) aggregate week per summer.
+ 271 |     No beneficial interest. No voting rights. No financial obligations.
+ 272 | 
+ 273 |     Mary Jean Foss: No beneficial interest (transferred to children).
+ 274 |     Jane Birkhead: No beneficial interest (transferred to children).
  275 | 
- 276 |     Exhibit A: Betsy Young Forfeiture and Lifetime Use Right Agreement
- 277 |     Exhibit B: Transfer of Beneficial Interest -- Mary Jean Foss to
- 278 |                Jennifer Yommer and Martha Foss
- 279 |     Exhibit C: Transfer of Beneficial Interest -- Jane Birkhead to
- 280 |                Joey Birkhead and Diane Birkhead
- 281 |     Exhibit D: Spousal Rights Clarification
- 282 | 
- 283 | 
- 284 | XIV. Signatures
- 285 | 
- 286 | Each undersigned party acknowledges that they have read and understand the terms of this Agreement, that they have had the opportunity to consult with independent legal counsel, and that they execute this Agreement voluntarily.
+ 276 | 
+ 277 | X. Active Beneficiaries and Voting
+ 278 | 
+ 279 | Following this Agreement, the active beneficiaries entitled to vote on Trust matters shall be:
+ 280 | 
+ 281 |     1. John M. Flanagan (25%)
+ 282 |     2. Christopher J. Flanagan (25%)
+ 283 |     3. Jennifer Yommer (12.5%)
+ 284 |     4. Martha Foss (12.5%)
+ 285 |     5. Joey Birkhead (12.5%)
+ 286 |     6. Diane Birkhead (12.5%)
  287 | 
- 288 | 
- 289 | Current Beneficiaries:
+ 288 | A majority of the active beneficiaries shall be required for any vote under the Trust Agreement unless the Trust Agreement specifies a different threshold.
+ 289 | 
  290 | 
- 291 | Mary Jean Foss
- 292 | Signature: ___________________________________________
- 293 | Date: ____________________
- 294 | Address: ___________________________________________
+ 291 | XI. Governing Law
+ 292 | 
+ 293 | This Agreement shall be governed by the laws of the State of Maine, including the Maine Uniform Trust Code (18-B M.R.S.), consistent with Article XIII of the Trust Agreement.
+ 294 | 
  295 | 
- 296 | 
- 297 | John M. Flanagan
- 298 | Signature: ___________________________________________
- 299 | Date: ____________________
- 300 | Address: ___________________________________________
- 301 | 
+ 296 | XII. Severability
+ 297 | 
+ 298 | If any provision of this Agreement is found to be invalid or unenforceable, the remaining provisions shall continue in full force and effect.
+ 299 | 
+ 300 | 
+ 301 | XIII. Entire Agreement
  302 | 
- 303 | Jane Birkhead
- 304 | Signature: ___________________________________________
- 305 | Date: ____________________
- 306 | Address: ___________________________________________
+ 303 | This Agreement, together with its attached Exhibits, constitutes the complete agreement of the parties with respect to the matters addressed herein. This Agreement supplements the Flanagan Family 321 Trust Agreement dated 2005 and does not replace or revoke it except as specifically modified herein.
+ 304 | 
+ 305 | 
+ 306 | XIV. Exhibits
  307 | 
- 308 | 
- 309 | Elizabeth (Betsy) Young
- 310 | Signature: ___________________________________________
- 311 | Date: ____________________
- 312 | Address: ___________________________________________
- 313 | 
- 314 | 
- 315 | Christopher J. Flanagan
- 316 | Signature: ___________________________________________
- 317 | Date: ____________________
- 318 | Address: ___________________________________________
- 319 | 
+ 308 | The following Exhibits are attached to and incorporated into this Agreement:
+ 309 | 
+ 310 |     Exhibit A: Betsy Young Forfeiture and Lifetime Use Right Agreement
+ 311 |     Exhibit B: Transfer of Beneficial Interest -- Mary Jean Foss to
+ 312 |                Jennifer Yommer and Martha Foss
+ 313 |     Exhibit C: Transfer of Beneficial Interest -- Jane Birkhead to
+ 314 |                Joey Birkhead and Diane Birkhead
+ 315 |     Exhibit D: Spousal Rights Clarification
+ 316 |     Exhibit E: Simplified Future Trustee Succession Mechanism
+ 317 | 
+ 318 | 
+ 319 | XV. Signatures
  320 | 
- 321 | Successor Beneficiaries:
+ 321 | Each undersigned party acknowledges that they have read and understand the terms of this Agreement, that they have had the opportunity to consult with independent legal counsel, and that they execute this Agreement voluntarily.
  322 | 
- 323 | Jennifer Yommer
- 324 | Signature: ___________________________________________
- 325 | Date: ____________________
- 326 | Address: ___________________________________________
- 327 | 
- 328 | 
- 329 | Martha Foss
- 330 | Signature: ___________________________________________
- 331 | Date: ____________________
- 332 | Address: ___________________________________________
- 333 | 
- 334 | 
- 335 | Joey Birkhead
- 336 | Signature: ___________________________________________
- 337 | Date: ____________________
- 338 | Address: ___________________________________________
- 339 | 
- 340 | 
- 341 | Diane Birkhead
- 342 | Signature: ___________________________________________
- 343 | Date: ____________________
- 344 | Address: ___________________________________________
- 345 | 
- 346 | 
- 347 | Affected Persons:
+ 323 | 
+ 324 | Current Beneficiaries:
+ 325 | 
+ 326 | Mary Jean Foss
+ 327 | Signature: ___________________________________________
+ 328 | Date: ____________________
+ 329 | Address: ___________________________________________
+ 330 | 
+ 331 | 
+ 332 | John M. Flanagan
+ 333 | Signature: ___________________________________________
+ 334 | Date: ____________________
+ 335 | Address: ___________________________________________
+ 336 | 
+ 337 | 
+ 338 | Jane Birkhead
+ 339 | Signature: ___________________________________________
+ 340 | Date: ____________________
+ 341 | Address: ___________________________________________
+ 342 | 
+ 343 | 
+ 344 | Elizabeth (Betsy) Young
+ 345 | Signature: ___________________________________________
+ 346 | Date: ____________________
+ 347 | Address: ___________________________________________
  348 | 
- 349 | Edward Young
- 350 | Signature: ___________________________________________
- 351 | Date: ____________________
- 352 | Address: ___________________________________________
- 353 | 
+ 349 | 
+ 350 | Christopher J. Flanagan
+ 351 | Signature: ___________________________________________
+ 352 | Date: ____________________
+ 353 | Address: ___________________________________________
  354 | 
- 355 | Jack Young
- 356 | Signature: ___________________________________________
- 357 | Date: ____________________
- 358 | Address: ___________________________________________
- 359 | 
- 360 | 
- 361 | Successor Co-Trustees:
+ 355 | 
+ 356 | Successor Beneficiaries:
+ 357 | 
+ 358 | Jennifer Yommer
+ 359 | Signature: ___________________________________________
+ 360 | Date: ____________________
+ 361 | Address: ___________________________________________
  362 | 
- 363 | John M. Flanagan, Successor Co-Trustee
- 364 | Signature: ___________________________________________
- 365 | Date: ____________________
- 366 | 
- 367 | 
- 368 | Christopher J. Flanagan, Successor Co-Trustee
- 369 | Signature: ___________________________________________
- 370 | Date: ____________________
- 371 | 
- 372 | 
- 373 | Notary Acknowledgement
+ 363 | 
+ 364 | Martha Foss
+ 365 | Signature: ___________________________________________
+ 366 | Date: ____________________
+ 367 | Address: ___________________________________________
+ 368 | 
+ 369 | 
+ 370 | Joey Birkhead
+ 371 | Signature: ___________________________________________
+ 372 | Date: ____________________
+ 373 | Address: ___________________________________________
  374 | 
- 375 | STATE OF ____________________
- 376 | COUNTY OF ____________________
- 377 | 
- 378 | On ____________________, 2026, before me, ____________________________ (Notary Public), personally appeared the individuals whose signatures appear above, who proved to me on the basis of satisfactory evidence to be the persons whose names are subscribed to the within instrument and acknowledged to me that they executed the same voluntarily and in their authorized capacities.
- 379 | 
- 380 | I certify under PENALTY OF PERJURY under the laws of the State of ____________________ that the foregoing paragraph is true and correct.
+ 375 | 
+ 376 | Diane Birkhead
+ 377 | Signature: ___________________________________________
+ 378 | Date: ____________________
+ 379 | Address: ___________________________________________
+ 380 | 
  381 | 
- 382 | WITNESS my hand and official seal.
+ 382 | Affected Persons:
  383 | 
- 384 | Signature: ____________________________ (Seal)
- 385 | 
- 386 | Print Name: ____________________________
- 387 | 
- 388 | My Commission Expires: ____________________
+ 384 | Edward Young
+ 385 | Signature: ___________________________________________
+ 386 | Date: ____________________
+ 387 | Address: ___________________________________________
+ 388 | 
+ 389 | 
+ 390 | Jack Young
+ 391 | Signature: ___________________________________________
+ 392 | Date: ____________________
+ 393 | Address: ___________________________________________
+ 394 | 
+ 395 | 
+ 396 | Successor Co-Trustees:
+ 397 | 
+ 398 | John M. Flanagan, Successor Co-Trustee
+ 399 | Signature: ___________________________________________
+ 400 | Date: ____________________
+ 401 | 
+ 402 | 
+ 403 | Christopher J. Flanagan, Successor Co-Trustee
+ 404 | Signature: ___________________________________________
+ 405 | Date: ____________________
+ 406 | 
+ 407 | 
+ 408 | Notary Acknowledgement
+ 409 | 
+ 410 | STATE OF ____________________
+ 411 | COUNTY OF ____________________
+ 412 | 
+ 413 | On ____________________, 2026, before me, ____________________________ (Notary Public), personally appeared the individuals whose signatures appear above, who proved to me on the basis of satisfactory evidence to be the persons whose names are subscribed to the within instrument and acknowledged to me that they executed the same voluntarily and in their authorized capacities.
+ 414 | 
+ 415 | I certify under PENALTY OF PERJURY under the laws of the State of ____________________ that the foregoing paragraph is true and correct.
+ 416 | 
+ 417 | WITNESS my hand and official seal.
+ 418 | 
+ 419 | Signature: ____________________________ (Seal)
+ 420 | 
+ 421 | Print Name: ____________________________
+ 422 | 
+ 423 | My Commission Expires: ____________________
 `;
 
 docs['p4_exA'] = `
@@ -2349,6 +2390,235 @@ docs['p4_exD'] = `
  141 | Christopher J. Flanagan, Successor Co-Trustee
  142 | Signature: ___________________________________________
  143 | Date: ____________________
+`;
+
+docs['p4_exE'] = `
+   1 | Exhibit E
+   2 | 
+   3 | Simplified Future Trustee Succession Mechanism
+   4 | 
+   5 | Attached to and incorporated into the Non-Judicial Settlement Agreement
+   6 | dated ____________________, 2026
+   7 | 
+   8 | Flanagan Family 321 Trust
+   9 | Property: 321 Phillips Way, Ellsworth, ME 04605 (Branch Lake)
+  10 | 
+  11 | 
+  12 | I. Purpose
+  13 | 
+  14 | Article 10.2 of the Trust Agreement provides for the election of successor
+  15 | trustees by a majority of the beneficiaries, but does not specify the
+  16 | procedure for conducting such an election or the documentation required
+  17 | to effectuate a future change in trustees.
+  18 | 
+  19 | This Exhibit establishes a simplified, repeatable process for future
+  20 | trustee transitions that can be completed without retaining an attorney,
+  21 | while still satisfying the requirements of Maine law and the Hancock
+  22 | County Registry of Deeds.
+  23 | 
+  24 | 
+  25 | II. Applicability
+  26 | 
+  27 | This mechanism applies to any future change in trustees of the Flanagan
+  28 | Family 321 Trust, whether caused by:
+  29 | 
+  30 |     a. Voluntary resignation of one or both Co-Trustees.
+  31 | 
+  32 |     b. Death of one or both Co-Trustees.
+  33 | 
+  34 |     c. Incapacity of one or both Co-Trustees, as defined in Article 1.8
+  35 |        of the Trust Agreement.
+  36 | 
+  37 |     d. Removal of a trustee by majority vote of the active beneficiaries.
+  38 | 
+  39 | 
+  40 | III. Step-by-Step Process
+  41 | 
+  42 | The following steps shall be sufficient to effectuate any future change
+  43 | in trustees:
+  44 | 
+  45 | Step 1: Resignation or Determination of Vacancy
+  46 | 
+  47 |     If a trustee is resigning voluntarily:
+  48 | 
+  49 |         a. The resigning trustee shall execute a written Resignation of
+  50 |            Trustee and deliver it to all active beneficiaries and any
+  51 |            remaining Co-Trustee.
+  52 | 
+  53 |         b. The resignation shall be effective thirty (30) days after
+  54 |            delivery, or upon acceptance of the successor, whichever
+  55 |            occurs later, consistent with 18-B M.R.S. Section 705.
+  56 | 
+  57 |     If a trustee has died or become incapacitated:
+  58 | 
+  59 |         a. The remaining Co-Trustee (if any) or any active beneficiary
+  60 |            shall notify all active beneficiaries in writing of the
+  61 |            vacancy and the need to elect a successor.
+  62 | 
+  63 | Step 2: Nomination and Vote
+  64 | 
+  65 |     a. Any active beneficiary may nominate a candidate for successor
+  66 |        trustee.
+  67 | 
+  68 |     b. A vote shall be conducted among all active beneficiaries. The
+  69 |        vote may be conducted in person, by telephone conference, by
+  70 |        written ballot (mail or email), or by any combination of these
+  71 |        methods.
+  72 | 
+  73 |     c. A majority of the active beneficiaries must vote in favor of the
+  74 |        nominee. For purposes of this section, "active beneficiaries"
+  75 |        means those persons holding a beneficial interest in the Trust
+  76 |        and entitled to vote as of the date of the vote.
+  77 | 
+  78 |     d. The vote shall be documented in a written Record of Beneficiary
+  79 |        Vote that includes:
+  80 |            - The date of the vote
+  81 |            - The names of all eligible voters
+  82 |            - Each voter's vote (in favor, opposed, or abstain)
+  83 |            - Each voter's signature
+  84 |            - The result
+  85 |            - The successor trustee's written acceptance
+  86 | 
+  87 | Step 3: Acceptance
+  88 | 
+  89 |     The elected successor trustee shall sign a written acceptance of
+  90 |     the appointment, acknowledging that:
+  91 | 
+  92 |         a. They agree to be bound by all terms of the Trust Agreement.
+  93 | 
+  94 |         b. If two Co-Trustees are serving, the concurrence and joinder
+  95 |            of both is required for all Trust administration (Article 8.2).
+  96 | 
+  97 |         c. They accept fiduciary responsibility for the Trust assets.
+  98 | 
+  99 | Step 4: Affidavit of Successor Trustee
+ 100 | 
+ 101 |     The successor trustee(s) shall execute a notarized Affidavit of
+ 102 |     Successor Trustee that includes:
+ 103 | 
+ 104 |         a. Identification of the Trust (name, date, settlor).
+ 105 |         b. Description of the Trust property (address, deed reference).
+ 106 |         c. Names of the previous trustee(s) and reason for the change.
+ 107 |         d. Citation of Article 10.2 as the authority for succession.
+ 108 |         e. Names and addresses of the successor trustee(s).
+ 109 |         f. A statement of the successor trustee's powers.
+ 110 | 
+ 111 |     This Affidavit shall be recorded in the Hancock County Registry of
+ 112 |     Deeds pursuant to 18-B M.R.S. Section 1013.
+ 113 | 
+ 114 | Step 5: Administrative Transfers
+ 115 | 
+ 116 |     The successor trustee(s) shall update:
+ 117 | 
+ 118 |         a. All Trust banking accounts (currently Camden National Bank).
+ 119 |         b. The Trust property insurance policy (currently MMG Insurance,
+ 120 |            Policy DW 0323180, or its successor policy).
+ 121 |         c. Any other accounts or registrations held in the name of the
+ 122 |            Trust or its trustees.
+ 123 | 
+ 124 | 
+ 125 | IV. Proof of Authority
+ 126 | 
+ 127 | Pursuant to Article 12.1 of the Trust Agreement, anyone may rely upon
+ 128 | a copy of the following documents, certified by a notary public, as
+ 129 | sufficient proof of a successor trustee's authority to act on behalf
+ 130 | of the Trust:
+ 131 | 
+ 132 |     a. The Record of Beneficiary Vote.
+ 133 |     b. The successor trustee's written acceptance.
+ 134 |     c. The recorded Affidavit of Successor Trustee.
+ 135 | 
+ 136 | No additional court order, attorney opinion, or Trust amendment shall
+ 137 | be required to establish the successor trustee's authority, provided
+ 138 | the above documents have been properly executed and recorded.
+ 139 | 
+ 140 | 
+ 141 | V. Templates
+ 142 | 
+ 143 | To facilitate future transitions, the current Co-Trustees shall
+ 144 | maintain on file the following template documents, which may be
+ 145 | adapted for future use:
+ 146 | 
+ 147 |     a. Resignation of Trustee (based on Phase 1 documents of this
+ 148 |        transition).
+ 149 | 
+ 150 |     b. Notice of Beneficiary Vote (based on Phase 2 documents of this
+ 151 |        transition).
+ 152 | 
+ 153 |     c. Record of Beneficiary Vote (based on Phase 2 documents of this
+ 154 |        transition).
+ 155 | 
+ 156 |     d. Affidavit of Successor Trustee (based on Phase 3 documents of
+ 157 |        this transition).
+ 158 | 
+ 159 |     e. Bank Authorization Letter (based on Phase 3 documents of this
+ 160 |        transition).
+ 161 | 
+ 162 |     f. Insurance Update Request (based on Phase 3 documents of this
+ 163 |        transition).
+ 164 | 
+ 165 | These templates, together with this Exhibit, provide a complete
+ 166 | self-service toolkit for future trustee transitions.
+ 167 | 
+ 168 | 
+ 169 | VI. Removal of a Trustee
+ 170 | 
+ 171 | In addition to resignation, death, and incapacity, a trustee may be
+ 172 | removed by a majority vote of the active beneficiaries. The process
+ 173 | shall be as follows:
+ 174 | 
+ 175 |     a. Any active beneficiary may initiate a removal vote by delivering
+ 176 |        written notice to all active beneficiaries and to the trustee
+ 177 |        whose removal is sought.
+ 178 | 
+ 179 |     b. The notice shall state the reason for the proposed removal.
+ 180 | 
+ 181 |     c. The trustee whose removal is sought shall have thirty (30) days
+ 182 |        from receipt of the notice to respond in writing to the
+ 183 |        beneficiaries.
+ 184 | 
+ 185 |     d. After the 30-day response period, a vote shall be conducted
+ 186 |        among all active beneficiaries (including the trustee if they
+ 187 |        are also a beneficiary).
+ 188 | 
+ 189 |     e. A majority vote in favor of removal shall be sufficient to
+ 190 |        remove the trustee.
+ 191 | 
+ 192 |     f. Upon removal, the successor trustee election process described
+ 193 |        in Section III above shall be followed.
+ 194 | 
+ 195 | 
+ 196 | VII. Number of Trustees
+ 197 | 
+ 198 |     a. The Trust shall have no fewer than one (1) and no more than
+ 199 |        three (3) trustees at any time.
+ 200 | 
+ 201 |     b. If only one trustee is serving, the active beneficiaries should
+ 202 |        elect a second Co-Trustee at the earliest practical opportunity
+ 203 |        to ensure compliance with the two-trustee governance requirement
+ 204 |        of Article 8.2.
+ 205 | 
+ 206 |     c. If three trustees are serving, a majority of two (2) shall
+ 207 |        control in all matters, consistent with Article 8.2.
+ 208 | 
+ 209 | 
+ 210 | VIII. Signatures
+ 211 | 
+ 212 | All parties to the Non-Judicial Settlement Agreement acknowledge and
+ 213 | agree to this Simplified Future Trustee Succession Mechanism by their
+ 214 | signatures on the Non-Judicial Settlement Agreement. No additional
+ 215 | signatures are required on this Exhibit.
+ 216 | 
+ 217 | Acknowledged by Co-Trustees:
+ 218 | 
+ 219 | John M. Flanagan, Successor Co-Trustee
+ 220 | Signature: ___________________________________________
+ 221 | Date: ____________________
+ 222 | 
+ 223 | 
+ 224 | Christopher J. Flanagan, Successor Co-Trustee
+ 225 | Signature: ___________________________________________
+ 226 | Date: ____________________
 `;
 
 docs['p5_mou'] = `
