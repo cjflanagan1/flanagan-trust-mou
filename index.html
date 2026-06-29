@@ -144,6 +144,20 @@
   }
   .doc-link:hover { background: #f0ead8; border-color: #8b6914; }
 
+  .doc-download {
+    display: inline-block;
+    margin: -2px 0 10px 16px;
+    color: #0f5f7a;
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .doc-download:hover {
+    color: #8b6914;
+  }
+
   .legal-ref-label {
     font-size: 0.78rem;
     color: #8b6914;
@@ -167,6 +181,62 @@
     color: #777;
     margin-top: 2px;
     font-style: italic;
+  }
+
+  .download-panel {
+    background: #fff;
+    border: 1px solid #d4c9b0;
+    border-radius: 6px;
+    padding: 22px 24px;
+    margin-bottom: 40px;
+  }
+
+  .download-panel h2 {
+    font-size: 1.05rem;
+    color: #1a3a4a;
+    margin-bottom: 4px;
+  }
+
+  .download-panel p {
+    font-size: 0.86rem;
+    color: #666;
+    margin-bottom: 16px;
+  }
+
+  .download-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
+    gap: 8px;
+  }
+
+  .pdf-link {
+    display: block;
+    background: #faf8f4;
+    border: 1px solid #e0d8c8;
+    border-radius: 4px;
+    color: #1a3a4a;
+    padding: 10px 12px;
+    text-decoration: none;
+    font-size: 0.84rem;
+    font-weight: 700;
+    line-height: 1.3;
+    transition: background 0.15s, border-color 0.15s;
+  }
+
+  .pdf-link:hover {
+    background: #f0ead8;
+    border-color: #8b6914;
+  }
+
+  .doc-actions {
+    display: none;
+    background: #fff;
+    border-bottom: 1px solid #d4c9b0;
+    padding: 12px 28px;
+  }
+
+  .doc-actions.visible {
+    display: block;
   }
 
   .overlay {
@@ -318,6 +388,7 @@
     header h1 { font-size: 1.3rem; }
     .doc-body { padding: 16px; font-size: 0.7rem; }
     .doc-explanation { padding: 16px; font-size: 0.82rem; }
+    .doc-actions { padding: 12px 16px; }
     .watermark { font-size: 4rem; }
     .container { padding: 20px 12px; }
   }
@@ -350,7 +421,9 @@
       <div class="doc-list-panel" id="panel-1">
         <h3>Documents</h3>
         <a class="doc-link" onclick="openDoc('p1_jane', 'Resignation of Trustee \u2014 Jane Birckhead')">Resignation of Trustee &mdash; Jane Birckhead<div class="doc-summary">Formal notice of resignation from Co-Trustee position</div></a>
+        <a class="doc-download" href="signed-document-pdfs/01-Resignation-of-Trustee-Jane-Birckhead.pdf" download>Download printable PDF</a>
         <a class="doc-link" onclick="openDoc('p1_betsy', 'Resignation of Trustee \u2014 Elizabeth (Betsy) Young')">Resignation of Trustee &mdash; Elizabeth (Betsy) Young<div class="doc-summary">Formal notice of resignation from Co-Trustee position</div></a>
+        <a class="doc-download" href="signed-document-pdfs/02-Resignation-of-Trustee-Betsy-Young.pdf" download>Download printable PDF</a>
         <div class="legal-ref-label">Legal References</div>
         <a class="doc-link" onclick="openDoc('article_10_2', 'Trust Agreement \u2014 Article 10.2')">Article 10.2 of the Trust Agreement<div class="doc-summary">Trust language authorizing successor trustee election by majority of beneficiaries</div></a>
         <a class="doc-link" href="https://legislature.maine.gov/statutes/18-B/title18-Bsec705.html" target="_blank" rel="noopener">18-B M.R.S. &sect; 705<div class="doc-summary">Maine Uniform Trust Code provision governing trustee resignation</div></a>
@@ -369,6 +442,7 @@
         <h3>Documents</h3>
         <a class="doc-link" onclick="openDoc('p2_notice', 'Notice of Beneficiary Vote')">Notice of Beneficiary Vote<div class="doc-summary">Written notice sent to all beneficiaries before the vote</div></a>
         <a class="doc-link" onclick="openDoc('p2_record', 'Record of Beneficiary Vote')">Record of Beneficiary Vote<div class="doc-summary">Official record of votes cast and trustee acceptance</div></a>
+        <a class="doc-download" href="signed-document-pdfs/03-Record-of-Beneficiary-Vote.pdf" download>Download printable PDF</a>
       </div>
     </div>
 
@@ -383,8 +457,11 @@
       <div class="doc-list-panel" id="panel-3">
         <h3>Documents</h3>
         <a class="doc-link" onclick="openDoc('p3_affidavit', 'Affidavit of Successor Trustee')">Affidavit of Successor Trustee<div class="doc-summary">Notarized sworn statement for recording at Hancock County Registry</div></a>
+        <a class="doc-download" href="signed-document-pdfs/04-Affidavit-of-Successor-Trustee.pdf" download>Download printable PDF</a>
         <a class="doc-link" onclick="openDoc('p3_bank', 'Bank Authorization Letter \u2014 Camden National')">Bank Authorization Letter &mdash; Camden National<div class="doc-summary">Request to transfer Trust bank accounts to new trustees</div></a>
+        <a class="doc-download" href="signed-document-pdfs/05-Bank-Authorization-Letter-Camden-National.pdf" download>Download printable PDF</a>
         <a class="doc-link" onclick="openDoc('p3_insurance', 'Insurance Update Request \u2014 MMG')">Insurance Update Request &mdash; MMG<div class="doc-summary">Request to update named insured on property insurance policy</div></a>
+        <a class="doc-download" href="signed-document-pdfs/06-Insurance-Update-Request-MMG.pdf" download>Download printable PDF</a>
       </div>
     </div>
 
@@ -399,11 +476,17 @@
       <div class="doc-list-panel" id="panel-4">
         <h3>Documents</h3>
         <a class="doc-link" onclick="openDoc('p4_njsa', 'Non-Judicial Settlement Agreement')">Non-Judicial Settlement Agreement<div class="doc-summary">Master agreement covering all substantive trust modifications</div></a>
+        <a class="doc-download" href="signed-document-pdfs/07-Non-Judicial-Settlement-Agreement.pdf" download>Download printable PDF</a>
         <a class="doc-link" onclick="openDoc('p4_exA', 'Exhibit A \u2014 Betsy Young Forfeiture &amp; Use Right')">Exhibit A &mdash; Betsy Young Forfeiture &amp; Use Right<div class="doc-summary">Terms of interest forfeiture and lifetime use right</div></a>
+        <a class="doc-download" href="signed-document-pdfs/08-Exhibit-A-Betsy-Young-Forfeiture-Use-Right.pdf" download>Download printable PDF</a>
         <a class="doc-link" onclick="openDoc('p4_exB', 'Exhibit B \u2014 Transfer of Interest: Jean Foss')">Exhibit B &mdash; Transfer of Interest: Jean Foss<div class="doc-summary">Transfer of Jean's 25% to Jennifer Yommer and Martha Foss</div></a>
+        <a class="doc-download" href="signed-document-pdfs/09-Exhibit-B-Transfer-of-Interest-Jean-Foss.pdf" download>Download printable PDF</a>
         <a class="doc-link" onclick="openDoc('p4_exC', 'Exhibit C \u2014 Transfer of Interest: Jane Birckhead')">Exhibit C &mdash; Transfer of Interest: Jane Birckhead<div class="doc-summary">Transfer of Jane's 25% to Joey and Diane Birckhead</div></a>
+        <a class="doc-download" href="signed-document-pdfs/10-Exhibit-C-Transfer-of-Interest-Jane-Birckhead.pdf" download>Download printable PDF</a>
         <a class="doc-link" onclick="openDoc('p4_exD', 'Exhibit D \u2014 Spousal Rights Clarification')">Exhibit D &mdash; Spousal Rights Clarification<div class="doc-summary">Defines succession rules for spouses and descendants</div></a>
+        <a class="doc-download" href="signed-document-pdfs/11-Exhibit-D-Spousal-Rights-Clarification.pdf" download>Download printable PDF</a>
         <a class="doc-link" onclick="openDoc('p4_exE', 'Exhibit E \u2014 Simplified Future Trustee Succession')">Exhibit E &mdash; Simplified Future Trustee Succession<div class="doc-summary">Step-by-step process for future trustee changes without an attorney</div></a>
+        <a class="doc-download" href="signed-document-pdfs/12-Exhibit-E-Simplified-Future-Trustee-Succession.pdf" download>Download printable PDF</a>
       </div>
     </div>
 
@@ -418,7 +501,9 @@
       <div class="doc-list-panel" id="panel-5">
         <h3>Documents</h3>
         <a class="doc-link" onclick="openDoc('p5_mou', 'Final Memorandum of Understanding')">Final Memorandum of Understanding<div class="doc-summary">Comprehensive document tying all phases into a single record</div></a>
+        <a class="doc-download" href="signed-document-pdfs/13-Final-Memorandum-of-Understanding.pdf" download>Download printable PDF</a>
         <a class="doc-link" onclick="openDoc('p5_transmittal', 'Transmittal Letter \u2014 Hancock County Registry')">Transmittal Letter &mdash; Hancock County Registry<div class="doc-summary">Cover letter for filing the Affidavit at the Registry of Deeds</div></a>
+        <a class="doc-download" href="signed-document-pdfs/14-Transmittal-Letter-Hancock-County-Registry.pdf" download>Download printable PDF</a>
         <a class="doc-link" onclick="openDoc('p5_checklist', 'Master Document Checklist')">Master Document Checklist<div class="doc-summary">Phase-by-phase tracking of all signatures, filings, and confirmations</div></a>
       </div>
     </div>
@@ -439,6 +524,7 @@
       <h3 id="doc-title">Document</h3>
       <button class="close-btn" onclick="closeDoc()">Close &times;</button>
     </div>
+    <div class="doc-actions" id="doc-actions"></div>
     <div class="doc-explanation" id="doc-explanation"></div>
     <div class="doc-body-wrapper">
       <div class="watermark">DRAFT</div>
@@ -450,6 +536,22 @@
 <script>
 const docs = {};
 const explanations = {};
+const pdfs = {
+  p1_jane: 'signed-document-pdfs/01-Resignation-of-Trustee-Jane-Birckhead.pdf',
+  p1_betsy: 'signed-document-pdfs/02-Resignation-of-Trustee-Betsy-Young.pdf',
+  p2_record: 'signed-document-pdfs/03-Record-of-Beneficiary-Vote.pdf',
+  p3_affidavit: 'signed-document-pdfs/04-Affidavit-of-Successor-Trustee.pdf',
+  p3_bank: 'signed-document-pdfs/05-Bank-Authorization-Letter-Camden-National.pdf',
+  p3_insurance: 'signed-document-pdfs/06-Insurance-Update-Request-MMG.pdf',
+  p4_njsa: 'signed-document-pdfs/07-Non-Judicial-Settlement-Agreement.pdf',
+  p4_exA: 'signed-document-pdfs/08-Exhibit-A-Betsy-Young-Forfeiture-Use-Right.pdf',
+  p4_exB: 'signed-document-pdfs/09-Exhibit-B-Transfer-of-Interest-Jean-Foss.pdf',
+  p4_exC: 'signed-document-pdfs/10-Exhibit-C-Transfer-of-Interest-Jane-Birckhead.pdf',
+  p4_exD: 'signed-document-pdfs/11-Exhibit-D-Spousal-Rights-Clarification.pdf',
+  p4_exE: 'signed-document-pdfs/12-Exhibit-E-Simplified-Future-Trustee-Succession.pdf',
+  p5_mou: 'signed-document-pdfs/13-Final-Memorandum-of-Understanding.pdf',
+  p5_transmittal: 'signed-document-pdfs/14-Transmittal-Letter-Hancock-County-Registry.pdf'
+};
 
 explanations['p1_jane'] = '<h4>About This Document</h4>' +
   '<div class="explain-section"><span class="explain-label">What it does:</span> This is Jane Birckhead\'s formal resignation from her role as Co-Trustee of the Flanagan Family 321 Trust. It is a legal notice delivered to all five beneficiaries informing them that she is stepping down.</div>' +
@@ -3302,8 +3404,24 @@ function renderDocBody(text) {
     );
 }
 
+function renderDocActions(key, title) {
+  const actions = document.getElementById('doc-actions');
+  const pdf = pdfs[key];
+
+  if (!pdf) {
+    actions.classList.remove('visible');
+    actions.innerHTML = '';
+    return;
+  }
+
+  actions.innerHTML =
+    '<a class="pdf-link" href="' + escapeHtml(pdf) + '" download>Download printable PDF for ' + escapeHtml(title) + '</a>';
+  actions.classList.add('visible');
+}
+
 function openDoc(key, title) {
   document.getElementById('doc-title').textContent = title;
+  renderDocActions(key, title);
   document.getElementById('doc-explanation').innerHTML = explanations[key] || '';
   document.getElementById('doc-body').innerHTML = renderDocBody(docs[key]);
   document.getElementById('overlay').classList.add('visible');
