@@ -144,6 +144,24 @@
   }
   .doc-link:hover { background: #f0ead8; border-color: #8b6914; }
 
+  .legal-ref-label {
+    font-size: 0.78rem;
+    color: #8b6914;
+    margin: 14px 0 6px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+  }
+
+  .inline-link,
+  .doc-body a,
+  .doc-explanation a {
+    color: #0f5f7a;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    font-weight: 700;
+  }
+
   .doc-summary {
     font-size: 0.82rem;
     color: #777;
@@ -333,6 +351,9 @@
         <h3>Documents</h3>
         <a class="doc-link" onclick="openDoc('p1_jane', 'Resignation of Trustee \u2014 Jane Birckhead')">Resignation of Trustee &mdash; Jane Birckhead<div class="doc-summary">Formal notice of resignation from Co-Trustee position</div></a>
         <a class="doc-link" onclick="openDoc('p1_betsy', 'Resignation of Trustee \u2014 Elizabeth (Betsy) Young')">Resignation of Trustee &mdash; Elizabeth (Betsy) Young<div class="doc-summary">Formal notice of resignation from Co-Trustee position</div></a>
+        <div class="legal-ref-label">Legal References</div>
+        <a class="doc-link" onclick="openDoc('article_10_2', 'Trust Agreement \u2014 Article 10.2')">Article 10.2 of the Trust Agreement<div class="doc-summary">Trust language authorizing successor trustee election by majority of beneficiaries</div></a>
+        <a class="doc-link" href="https://legislature.maine.gov/statutes/18-B/title18-Bsec705.html" target="_blank" rel="noopener">18-B M.R.S. &sect; 705<div class="doc-summary">Maine Uniform Trust Code provision governing trustee resignation</div></a>
       </div>
     </div>
 
@@ -432,13 +453,13 @@ const explanations = {};
 
 explanations['p1_jane'] = '<h4>About This Document</h4>' +
   '<div class="explain-section"><span class="explain-label">What it does:</span> This is Jane Birckhead\'s formal resignation from her role as Co-Trustee of the Flanagan Family 321 Trust. It is a legal notice delivered to all five beneficiaries informing them that she is stepping down.</div>' +
-  '<div class="explain-section"><span class="explain-label">Why it is organized this way:</span> The document opens by identifying the Trust and all parties who must receive notice, then states the resignation, cites the dual legal authority (Article 10.2 of the Trust and Maine\'s 18-B M.R.S. Section 705), sets the effective date, preserves the duty to transfer records, and closes with a notary block. This structure ensures the Registry of Deeds, the bank, and any future court can trace a clean chain of authority.</div>' +
-  '<div class="explain-section"><span class="explain-label">Why timing matters:</span> This must happen FIRST. The trustees must resign before a successor vote can be triggered. Article 10.2 only activates when the initial trustees are "unable to serve or continue serving." Without a signed resignation on file, there is no legal basis to hold the vote in Phase 2. The 30-day notice period (required by Maine statute) also means this document sets the clock for the entire timeline.</div>';
+  '<div class="explain-section"><span class="explain-label">Why it is organized this way:</span> The document opens by identifying the Trust and all parties who must receive notice, then states the resignation, cites the dual legal authority (<a href="#" onclick="openDoc(&quot;article_10_2&quot;, &quot;Trust Agreement - Article 10.2&quot;); return false;">Article 10.2 of the Trust</a> and Maine\'s <a href="https://legislature.maine.gov/statutes/18-B/title18-Bsec705.html" target="_blank" rel="noopener">18-B M.R.S. Section 705</a>), sets the effective date, preserves the duty to transfer records, and closes with a notary block. This structure ensures the Registry of Deeds, the bank, and any future court can trace a clean chain of authority.</div>' +
+  '<div class="explain-section"><span class="explain-label">Why timing matters:</span> This must happen FIRST. The trustees must resign before a successor vote can be triggered. <a href="#" onclick="openDoc(&quot;article_10_2&quot;, &quot;Trust Agreement - Article 10.2&quot;); return false;">Article 10.2</a> only activates when the initial trustees are "unable to serve or continue serving." Without a signed resignation on file, there is no legal basis to hold the vote in Phase 2. The 30-day notice period (required by Maine statute) also means this document sets the clock for the entire timeline.</div>';
 
 explanations['p1_betsy'] = '<h4>About This Document</h4>' +
-  '<div class="explain-section"><span class="explain-label">What it does:</span> This is Elizabeth (Betsy) Young\'s formal resignation from her role as Co-Trustee. It is identical in structure to Jane Birckhead\'s resignation because both must resign for Article 10.2 to trigger the successor election process.</div>' +
+  '<div class="explain-section"><span class="explain-label">What it does:</span> This is Elizabeth (Betsy) Young\'s formal resignation from her role as Co-Trustee. It is identical in structure to Jane Birckhead\'s resignation because both must resign for <a href="#" onclick="openDoc(&quot;article_10_2&quot;, &quot;Trust Agreement - Article 10.2&quot;); return false;">Article 10.2</a> to trigger the successor election process.</div>' +
   '<div class="explain-section"><span class="explain-label">Why it is organized this way:</span> Same structure as Jane\'s resignation: identification of parties, statement of resignation, dual legal authority, effective date, transfer duties, and notary. Both resignations must follow the same format so they carry equal legal weight.</div>' +
-  '<div class="explain-section"><span class="explain-label">Why timing matters:</span> Article 10.2 says the successor election happens when "both" initial trustees are unable to serve. Both resignations must be signed and delivered before the Phase 2 vote. If only one resigns, Article 10.1 allows the survivor to continue as sole trustee, and the beneficiary vote mechanism does not activate.</div>';
+  '<div class="explain-section"><span class="explain-label">Why timing matters:</span> <a href="#" onclick="openDoc(&quot;article_10_2&quot;, &quot;Trust Agreement - Article 10.2&quot;); return false;">Article 10.2</a> says the successor election happens when "both" initial trustees are unable to serve. Both resignations must be signed and delivered before the Phase 2 vote. If only one resigns, Article 10.1 allows the survivor to continue as sole trustee, and the beneficiary vote mechanism does not activate.</div>';
 
 explanations['p2_notice'] = '<h4>About This Document</h4>' +
   '<div class="explain-section"><span class="explain-label">What it does:</span> This is a formal written notice sent to all five beneficiaries informing them that a vote will be held to elect successor trustees. It names the nominees (John and Chris), explains why the vote is happening, and provides the date, time, and method.</div>' +
@@ -509,6 +530,19 @@ explanations['p5_checklist'] = '<h4>About This Document</h4>' +
   '<div class="explain-section"><span class="explain-label">What it does:</span> This is a phase-by-phase tracking checklist for the entire transition. Every document has checkboxes for signed, notarized, submitted, and confirmed status. It breaks out all 13 individual signatures on the NJSA. It is the project management tool that ensures nothing falls through the cracks.</div>' +
   '<div class="explain-section"><span class="explain-label">Why it is organized this way:</span> It mirrors the 5-phase structure so you can work through it sequentially. Each item has the specific verification steps relevant to that document (notarized? submitted? confirmed? recording book and page?). The Phase 4 section individually names every person who must sign the NJSA. The "Supporting Documents" section at the end ensures the originals and confirmations are stored safely.</div>' +
   '<div class="explain-section"><span class="explain-label">Why timing matters:</span> This is a living document used throughout the entire process. It is the tool that keeps the phases in order and ensures each step is fully complete before moving to the next. It is listed in Phase 5 because its final state — everything checked off — is the confirmation that the transition is done.</div>';
+
+docs['article_10_2'] = `
+ARTICLE X
+TRUSTEES
+
+10.1 The initial Trustees of this Trust shall be JANE BIRCKHEAD and ELIZABETH
+YOUNG, as Co-Trustees, or the survivor of them as sole Trustee.
+
+10.2 Upon the death of the second of the initial Trustees to die or if both JANE
+BIRCKHEAD and ELIZABETH YOUNG are unable to serve or continue serving as Trustees,
+then the successor Trustee or Trustees shall be the person or persons elected by a majority of the
+beneficiaries.
+`;
 
 docs['p1_jane'] = `
    1 | Resignation by Trustee Named in a Trust Instrument
@@ -3247,10 +3281,31 @@ function togglePhase(n) {
   }
 }
 
+function escapeHtml(text) {
+  return String(text || '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
+function renderDocBody(text) {
+  return escapeHtml(text)
+    .replace(
+      /\bArticle 10\.2\b/g,
+      '<a href="#" onclick="openDoc(&quot;article_10_2&quot;, &quot;Trust Agreement - Article 10.2&quot;); return false;">Article 10.2</a>'
+    )
+    .replace(
+      /\b18-B M\.R\.S\. Section 705\b/g,
+      '<a href="https://legislature.maine.gov/statutes/18-B/title18-Bsec705.html" target="_blank" rel="noopener">18-B M.R.S. Section 705</a>'
+    );
+}
+
 function openDoc(key, title) {
   document.getElementById('doc-title').textContent = title;
   document.getElementById('doc-explanation').innerHTML = explanations[key] || '';
-  document.getElementById('doc-body').textContent = docs[key];
+  document.getElementById('doc-body').innerHTML = renderDocBody(docs[key]);
   document.getElementById('overlay').classList.add('visible');
   document.body.style.overflow = 'hidden';
 }
