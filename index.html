@@ -357,13 +357,41 @@
     font-weight: 700;
   }
 
+  .review-replaced {
+    display: block;
+    background: #ffebee;
+    border-left: 4px solid #c62828;
+    color: #7f1d1d;
+    padding: 8px 10px;
+    margin: 4px 0;
+    text-decoration: line-through;
+  }
+
+  .review-with {
+    display: block;
+    background: #e8f5e9;
+    border-left: 4px solid #2e7d32;
+    color: #1b5e20;
+    padding: 8px 10px;
+    margin: 4px 0;
+    font-weight: 700;
+  }
+
   .review-label {
     display: inline-block;
-    color: #2e7d32;
     font-size: 0.72rem;
     letter-spacing: 0.08em;
     margin-right: 6px;
     text-transform: uppercase;
+  }
+
+  .review-added .review-label,
+  .review-with .review-label {
+    color: #2e7d32;
+  }
+
+  .review-replaced .review-label {
+    color: #c62828;
   }
 
   .draft-banner {
@@ -2017,8 +2045,9 @@ docs['p4_exA'] = `
   83 |     c. "Summer" shall mean the period from Memorial Day weekend through
   84 |        Labor Day weekend of each calendar year.
   85 |
-  86 |     d. Elizabeth Mary Young, Edward Joseph Young IV, or John Nelson Young shall submit their requested dates to the
-  87 |        Co-Trustees before May 1 of each year.
+  86 | [REPLACED LINES 86-87]    d. Elizabeth Mary Young, Edward Joseph Young IV, or John Nelson Young shall submit their requested dates to the
+  87 |        Co-Trustees before May 1 of each year.[/REPLACED]
+  86a | [WITH]    d. Elizabeth Mary Young, Edward Joseph Young IV, or John Nelson Young may participate in the annual scheduling process or submit requested dates to the Trustees during the preliminary scheduling period in the last week of January. The annual schedule shall be finalized by the end of March each year.[/WITH]
   88 |
   89 |     e. The Co-Trustees will make every reasonable effort to accommodate
   90 |        the specific dates requested, in coordination with the schedules
@@ -3465,6 +3494,18 @@ function renderDocBody(text) {
       /\[ADDED([^\]]*)\]([\s\S]*?)\[\/ADDED\]/g,
       function(match, note, body) {
         return '<span class="review-added"><span class="review-label">Added' + note + '</span>' + body + '</span>';
+      }
+    )
+    .replace(
+      /\[REPLACED([^\]]*)\]([\s\S]*?)\[\/REPLACED\]/g,
+      function(match, note, body) {
+        return '<span class="review-replaced"><span class="review-label">Replaced' + note + '</span>' + body + '</span>';
+      }
+    )
+    .replace(
+      /\[WITH([^\]]*)\]([\s\S]*?)\[\/WITH\]/g,
+      function(match, note, body) {
+        return '<span class="review-with"><span class="review-label">With' + note + '</span>' + body + '</span>';
       }
     )
     .replace(
