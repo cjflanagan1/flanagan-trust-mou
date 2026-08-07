@@ -1962,7 +1962,7 @@ docs['p4_exA'] = `
   31 |
   32 | Elizabeth Mary Young, Edward Joseph Young IV, and John Nelson Young no longer wish to participate in the shared expenses of the Camp Property as outlined in Article 5.3 of the Trust Agreement.
   33 |
- 33a | [ADDED]For purposes of this Exhibit, any reference to Elizabeth Mary Young's immediate heirs means Edward Joseph Young IV and John Nelson Young only. No broader class of heirs, descendants, spouses, successors, estates, assigns, or future generations is granted any beneficial interest, use right, voting right, purchase right, sale-proceeds claim, or other right under this Exhibit.[/ADDED]
+ 33a | [ADDED AFTER LINE 32 - NO TEXT REPLACED]For purposes of this Exhibit, any reference to Elizabeth Mary Young's immediate heirs means Edward Joseph Young IV and John Nelson Young only. No broader class of heirs, descendants, spouses, successors, estates, assigns, or future generations is granted any beneficial interest, use right, voting right, purchase right, sale-proceeds claim, or other right under this Exhibit.[/ADDED]
   34 |
   35 | III. Forfeiture of Beneficial Interest
   36 |
@@ -3460,8 +3460,10 @@ function escapeHtml(text) {
 function renderDocBody(text) {
   return escapeHtml(text)
     .replace(
-      /\[ADDED\]([\s\S]*?)\[\/ADDED\]/g,
-      '<span class="review-added"><span class="review-label">Added</span>$1</span>'
+      /\[ADDED([^\]]*)\]([\s\S]*?)\[\/ADDED\]/g,
+      function(match, note, body) {
+        return '<span class="review-added"><span class="review-label">Added' + note + '</span>' + body + '</span>';
+      }
     )
     .replace(
       /\bArticle 10\.2\b/g,
