@@ -600,6 +600,10 @@ const pdfs = {
   p5_transmittal: 'signed-document-pdfs/14-Transmittal-Letter-Hancock-County-Registry.pdf'
 };
 
+const docTitles = {
+  p4_exA: 'Exhibit A — Elizabeth Mary Young Forfeiture & Use Right'
+};
+
 explanations['p1_jane'] = '<h4>About This Document</h4>' +
   '<div class="explain-section"><span class="explain-label">What it does:</span> This is Jane Elizabeth Birckhead\'s formal resignation from her role as Co-Trustee of the Flanagan Pine Branch Trust. It is a legal notice delivered to all five beneficiaries informing them that she is stepping down.</div>' +
   '<div class="explain-section"><span class="explain-label">Why it is organized this way:</span> The document opens by identifying the Trust and all parties who must receive notice, then states the resignation, cites the dual legal authority (<a href="#" onclick="openDoc(&quot;article_10_2&quot;, &quot;Trust Agreement - Article 10.2&quot;); return false;">Article 10.2 of the Trust</a> and Maine\'s <a href="https://legislature.maine.gov/statutes/18-B/title18-Bsec705.html" target="_blank" rel="noopener">18-B M.R.S. Section 705</a>), sets the effective date, preserves the duty to transfer records, and closes with a notary block. This structure ensures the Registry of Deeds, the bank, and any future court can trace a clean chain of authority.</div>' +
@@ -3534,7 +3538,7 @@ function renderDocActions(key, title) {
       '<a class="pdf-link" href="' + escapeHtml(pdf) + '" target="_blank" rel="noopener">See Signed Document for ' + escapeHtml(title) + '</a>';
   } else {
     actions.innerHTML =
-      '<a class="pdf-link" href="' + escapeHtml(pdf) + '" download>Download printable PDF for ' + escapeHtml(title) + '</a>';
+      '<a class="pdf-link" href="' + escapeHtml(pdf) + '" download>Download original printable PDF for ' + escapeHtml(title) + ' (review edits are shown in this web viewer)</a>';
   }
   actions.classList.add('visible');
 }
@@ -3555,6 +3559,14 @@ function closeDoc() {
 
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') closeDoc();
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  const params = new URLSearchParams(window.location.search);
+  const docKey = params.get('doc');
+  if (docKey && docs[docKey]) {
+    openDoc(docKey, docTitles[docKey] || docKey);
+  }
 });
 
 // Visit counter using CountAPI
