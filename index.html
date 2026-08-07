@@ -347,6 +347,25 @@
     z-index: 2;
   }
 
+  .review-added {
+    display: block;
+    background: #e8f5e9;
+    border-left: 4px solid #2e7d32;
+    color: #1b5e20;
+    padding: 8px 10px;
+    margin: 4px 0;
+    font-weight: 700;
+  }
+
+  .review-label {
+    display: inline-block;
+    color: #2e7d32;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    margin-right: 6px;
+    text-transform: uppercase;
+  }
+
   .draft-banner {
     background: #8b6914;
     color: #fff;
@@ -1943,6 +1962,7 @@ docs['p4_exA'] = `
   31 |
   32 | Elizabeth Mary Young, Edward Joseph Young IV, and John Nelson Young no longer wish to participate in the shared expenses of the Camp Property as outlined in Article 5.3 of the Trust Agreement.
   33 |
+ 33a | [ADDED]For purposes of this Exhibit, any reference to Elizabeth Mary Young's immediate heirs means Edward Joseph Young IV and John Nelson Young only. No broader class of heirs, descendants, spouses, successors, estates, assigns, or future generations is granted any beneficial interest, use right, voting right, purchase right, sale-proceeds claim, or other right under this Exhibit.[/ADDED]
   34 |
   35 | III. Forfeiture of Beneficial Interest
   36 |
@@ -3439,6 +3459,10 @@ function escapeHtml(text) {
 
 function renderDocBody(text) {
   return escapeHtml(text)
+    .replace(
+      /\[ADDED\]([\s\S]*?)\[\/ADDED\]/g,
+      '<span class="review-added"><span class="review-label">Added</span>$1</span>'
+    )
     .replace(
       /\bArticle 10\.2\b/g,
       '<a href="#" onclick="openDoc(&quot;article_10_2&quot;, &quot;Trust Agreement - Article 10.2&quot;); return false;">Article 10.2</a>'
