@@ -75,6 +75,8 @@ Standardized names throughout the website and source documents where appropriate
 ## Finalization Record
 
 1. Approved redline language converted to clean website document text.
-2. Approved clean text applied to the corresponding source documents.
-3. Printable PDFs regenerated, including Elizabeth Mary Young's resignation and separate Exhibit A one-week-use agreement.
-4. Website copies of the PDFs updated.
+2. The approved Limited Use Right draft was merged in full, including January requests, March confirmation, annual waiver/no carryover, non-perpetual status, no purchaser burden, and termination upon loss of Trust ownership or Trust dissolution/termination.
+3. Related language in the Non-Judicial Settlement Agreement and Final MOU was conformed to Exhibit A.
+4. Approved clean text applied to the corresponding source documents.
+5. Printable PDFs regenerated, including Elizabeth Mary Young's resignation and separate Exhibit A one-week-use agreement.
+6. Website copies of the PDFs updated.
