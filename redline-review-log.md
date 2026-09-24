@@ -1,8 +1,8 @@
 # Redline Review Log
 
-Date: August 7, 2026
+Date: September 24, 2026
 
-This log records the review changes prepared on the website so the family can later approve the redlines and finalize clean versions of the legal documents. Current review approach: the website keeps original text visible in red "Replaced" blocks and proposed text visible in green "With" or "Added" blocks. Clean PDFs/source documents are not finalized until the redlines are approved.
+The family approved the listed redlines. They have been incorporated into clean website text and the corresponding finalized source documents and PDFs.
 
 ## Website Review Links
 
@@ -72,15 +72,9 @@ Standardized names throughout the website and source documents where appropriate
 11. Edit 4, rental liability waiver, created separately from the MOU:
     Added a standalone Camp Property Rental Liability Waiver covering assumption of risk, no lifeguard, dangerous rocks and lake conditions, kayaks/canoes/paddleboards/boats/watercraft risks, injury or death risk, release of liability, indemnification, guest responsibility, minors, emergency responsibility, and signature blocks.
 
-## Finalization Checklist
+## Finalization Record
 
-When the trustees/family approve the redlines:
-
-1. Convert approved redline language into clean text in the website document data.
-2. Apply approved clean text to the corresponding source documents in `signature-pdf-source/`.
-3. Regenerate the printable PDFs in `signed-document-pdfs/`.
-4. Confirm all names remain in the agreed full-name format.
-5. Confirm all web review documents still display visible line numbers.
-6. Commit the finalized legal-document update.
-7. Push to GitHub Pages and verify the deployed website.
-
+1. Approved redline language converted to clean website document text.
+2. Approved clean text applied to the corresponding source documents.
+3. Printable PDFs regenerated, including Elizabeth Mary Young's resignation and separate Exhibit A one-week-use agreement.
+4. Website copies of the PDFs updated.
